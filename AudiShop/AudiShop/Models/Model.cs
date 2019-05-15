@@ -27,7 +27,7 @@ namespace AudiShop.Models
         public string PictureName { get; set; }
 
         public decimal Price { get; set; }
-        public bool Current { get; set; }
+        public bool Available { get; set; }
 
         //Categoria == UnderBody
         public virtual Categoria Categoria { get; set; }
