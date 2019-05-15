@@ -10,13 +10,16 @@ namespace AudiShop.Models
     {
         public int ModelID { get; set; }
         public int CategoriaID { get; set; }
-        public int SilnikID { get; set; }
+        public int EngineID { get; set; }
 
         [Required(ErrorMessage = "Enter model name.")]
         public ModelType Name { get; set; }
 
         [Required(ErrorMessage = "Car Drive is required.")]
         public CarDriveType CarDrive { get; set; }
+
+        [Required(ErrorMessage = "Package is required.")]
+        public PackageType Package { get; set; }
 
         [Required(ErrorMessage = "Created Date is required.")]
         public DateTime CreatedDate { get; set; }
