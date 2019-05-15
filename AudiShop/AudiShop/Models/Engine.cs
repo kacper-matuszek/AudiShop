@@ -10,7 +10,6 @@ namespace AudiShop.Models
     {
         public int EngineID { get; set; }
 
-        [Required(ErrorMessage = "Engine Code is required.")]
         public int Code { get; set; }
 
         [Required(ErrorMessage = "Enter engine capacity.")]

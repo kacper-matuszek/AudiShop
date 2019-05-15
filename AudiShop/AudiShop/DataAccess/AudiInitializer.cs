@@ -29,14 +29,51 @@ namespace AudiShop.DataAccess
             categories.ForEach(c => context.Categories.AddOrUpdate(c));
             context.SaveChanges();
 
-            var models = new List<Engine>
+            var engines = new List<Engine>
             {
-                new Engine() {EngineID = 1, Capacity = 25, Emblem = EmblemType.TFSI, HorsePower = 95, KiloWat = 70,
-                Turbo = true, Type = EngineType.Petrol},
-                new Engine() {EngineID = 2, Capacity = 30, Emblem = EmblemType.TFSI, HorsePower = 116, KiloWat = 85,
-                Turbo = true, Type = EngineType.Petrol},
-                new Engine() {EngineID = 3, Capacity = 35, Emblem = EmblemType.TFSI, HorsePower = 150, KiloWat = 110,
-                Turbo = true, Type = EngineType.Petrol}
+                /* Petrol*/
+                new Engine() {EngineID = 1, Code = 25, Capacity = 1.0f, Emblem = EmblemType.TFSI, HorsePower = 95, KiloWat = 70,
+                Turbo = true, AmountCylinders = 3, Type = EngineType.Petrol},
+                new Engine() {EngineID = 2, Code = 30, Capacity = 1.0f, Emblem = EmblemType.TFSI, HorsePower = 116, KiloWat = 85,
+                Turbo = true, AmountCylinders = 3, Type = EngineType.Petrol},
+                new Engine() {EngineID = 3, Code = 35, Capacity = 1.5f, Emblem = EmblemType.TFSI, HorsePower = 150, KiloWat = 110,
+                Turbo = true, AmountCylinders = 4, Type = EngineType.Petrol},
+                new Engine() {EngineID = 4, Code = 40, Capacity = 2.0f, Emblem = EmblemType.TFSI, HorsePower = 200, KiloWat = 147,
+                Turbo = true, AmountCylinders = 4, Type = EngineType.Petrol}, 
+                new Engine() {EngineID = 5, Capacity = 1.4f, Emblem = EmblemType.TFSI, HorsePower = 204, KiloWat = 150,
+                Turbo = true, AmountCylinders = 4, Type = EngineType.Petrol},
+                new Engine() {EngineID = 6, Capacity = 2.0f, Emblem = EmblemType.TFSI, HorsePower = 300, KiloWat = 221,
+                Turbo = true, AmountCylinders = 4, Type = EngineType.Petrol},
+                new Engine() {EngineID = 7, Capacity = 2.5f, Emblem = EmblemType.TFSI, HorsePower = 400, KiloWat = 294,
+                Turbo = true, AmountCylinders = 5, Type = EngineType.Petrol},
+                new Engine() {EngineID = 8, Code = 35, Capacity = 2.0f, Emblem = EmblemType.TFSI, HorsePower = 150, KiloWat = 110,
+                Turbo = true, AmountCylinders = 4, Type = EngineType.Petrol},
+                new Engine() {EngineID = 9, Code = 40, Capacity = 2.0f, Emblem = EmblemType.TFSI, HorsePower = 190, KiloWat = 140,
+                Turbo = true, AmountCylinders = 4, Type = EngineType.Petrol},
+                new Engine() {EngineID = 10, Code = 45, Capacity = 2.0f, Emblem = EmblemType.TFSI, HorsePower = 245, KiloWat = 180,
+                Turbo = true, AmountCylinders = 4, Type = EngineType.Petrol},
+                new Engine() {EngineID = 11, Capacity = 3.0f, Emblem = EmblemType.TFSI, HorsePower = 354, KiloWat = 260,
+                Turbo = true, AmountCylinders = 6, Type = EngineType.Petrol},
+                new Engine() {EngineID = 12, Capacity = 2.9f, Emblem = EmblemType.TFSI, HorsePower = 450, KiloWat = 331,
+                Turbo = true, AmountCylinders = 6, Type = EngineType.Petrol},
+                new Engine() {EngineID = 13, Code = 55, Capacity = 3.0f, Emblem = EmblemType.TFSI, HorsePower = 340, KiloWat = 250,
+                Turbo = true, AmountCylinders = 6, Type = EngineType.Petrol},
+                /*Petrol*/
+
+                /*Diesel*/
+                new Engine() {EngineID = 14, Code = 35, Capacity = 2.0f, Emblem = EmblemType.TDI, HorsePower = 150, KiloWat = 110,
+                Turbo = true, AmountCylinders = 4, Type = EngineType.Diesel},
+                new Engine() {EngineID = 15, Code = 40, Capacity = 2.0f, Emblem = EmblemType.TDI, HorsePower = 190, KiloWat = 140,
+                Turbo = true, AmountCylinders = 4, Type = EngineType.Diesel},
+                new Engine() {EngineID = 16, Code = 40, Capacity = 2.0f, Emblem = EmblemType.TDI, HorsePower = 204, KiloWat = 150,
+                Turbo = true, AmountCylinders = 4, Type = EngineType.Diesel },
+                new Engine() {EngineID = 17, Capacity = 3.0f, Emblem = EmblemType.TDI, HorsePower = 347, KiloWat = 255,
+                Turbo = true, AmountCylinders = 6, Type = EngineType.Diesel},
+                new Engine() {EngineID = 18, Code = 50, Capacity = 3.0f, Emblem = EmblemType.TDI, HorsePower = 286, KiloWat = 210,
+                Turbo = true, AmountCylinders = 6, Type = EngineType.Diesel},
+                new Engine() {EngineID = 19, Code = 45, Capacity = 3.0f, Emblem = EmblemType.TDI, HorsePower = 231, KiloWat = 170,
+                Turbo = true, AmountCylinders = 6, Type = EngineType.Diesel}
+                /*Diesel*/
             };
 
         }
