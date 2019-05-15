@@ -15,6 +15,9 @@ namespace AudiShop.Models
         [Required(ErrorMessage = "Enter model name.")]
         [StringLength(100, ErrorMessage ="The length of model name cannot be under 100 chars.")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Car Drive is required.")]
+        public CarDriveType CarDrive { get; set; }
         public DateTime CreatedDate { get; set; }
 
         [Required(ErrorMessage = "Enter description.")]
@@ -28,5 +31,20 @@ namespace AudiShop.Models
         //Categoria == UnderBody
         public virtual Categoria Categoria { get; set; }
         public virtual Engine Engine { get; set; }
+    }
+
+    public enum PackageType
+    {
+        Standard,
+        Sportback,
+        Advanced,
+        SLine,
+        Sport
+    }
+
+    public enum CarDriveType
+    {
+        Quattro,
+        FrontAxle
     }
 }
