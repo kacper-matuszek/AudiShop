@@ -9,23 +9,24 @@ namespace AudiShop.Models
     public class Model
     {
         public int ModelID { get; set; }
-        public int KategoriaID { get; set; }
+        public int CategoriaID { get; set; }
         public int SilnikID { get; set; }
 
-        [Required(ErrorMessage = "Wprowadz nazwe modelu")]
-        [StringLength(100, ErrorMessage ="Nazwa nie może mieć więcej niż 100 znaków.")]
-        public string Nazwa { get; set; }
+        [Required(ErrorMessage = "Enter model name.")]
+        [StringLength(100, ErrorMessage ="The length of model name cannot be under 100 chars.")]
+        public string Name { get; set; }
+        public DateTime CreatedDate { get; set; }
 
-        [Required(ErrorMessage = "Wprowadz opis modelu.")]
-        public string Opis { get; set; }
-        public string Kolor { get; set; }
-        public string NazwaObrazka { get; set; }
+        [Required(ErrorMessage = "Enter description.")]
+        public string Description { get; set; }
+        public string Color { get; set; }
+        public string PictureName { get; set; }
 
-        public decimal Cena { get; set; }
-        public bool Aktualny { get; set; }
+        public decimal Price { get; set; }
+        public bool Current { get; set; }
 
-        //Kategoria == Podwozie
-        public virtual Kategoria Kategoria { get; set; }
-        public virtual Silnik Silnik { get; set; }
+        //Categoria == UnderBody
+        public virtual Categoria Categoria { get; set; }
+        public virtual Engine Engine { get; set; }
     }
 }
