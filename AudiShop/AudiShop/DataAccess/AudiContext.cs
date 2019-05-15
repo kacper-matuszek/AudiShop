@@ -13,10 +13,10 @@ namespace AudiShop.DataAccess
         public AudiContext()
             :base("AudiContext"){}
 
-        public DbSet<Model> Modele { get; set; }
-        public DbSet<Order> Zamowienia { get; set; }
-        public DbSet<OrderDetail> PozycjeZamowienia { get; set; }
-        public DbSet<Categoria> Kategorie { get; set; }
+        public DbSet<Model> Models { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Categoria> Categories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

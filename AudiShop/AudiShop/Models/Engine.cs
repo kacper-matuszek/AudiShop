@@ -21,7 +21,8 @@ namespace AudiShop.Models
 
         [Required(ErrorMessage = "Enter engine type.")]
         public EngineType Type { get; set; }
-        public string Emblem { get; set; }  //Tdi, TFSI, FSI
+        public EmblemType Emblem { get; set; }  //Tdi, TFSI, FSI
+        public int AmountCylinders { get; set; }
         public bool Turbo { get; set; }
 
         public virtual ICollection<Model> Models { get; set; }
@@ -32,5 +33,13 @@ namespace AudiShop.Models
         Diesel,
         Petrol,
         Eletrical
+    }
+
+    public enum EmblemType
+    {
+        TFSI,
+        TSI,
+        FSI,
+        TDI
     }
 }
