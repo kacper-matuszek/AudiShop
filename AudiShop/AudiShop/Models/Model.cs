@@ -13,8 +13,7 @@ namespace AudiShop.Models
         public int SilnikID { get; set; }
 
         [Required(ErrorMessage = "Enter model name.")]
-        [StringLength(100, ErrorMessage ="The length of model name cannot be under 100 chars.")]
-        public string Name { get; set; }
+        public ModelType Name { get; set; }
 
         [Required(ErrorMessage = "Car Drive is required.")]
         public CarDriveType CarDrive { get; set; }
@@ -46,5 +45,21 @@ namespace AudiShop.Models
     {
         Quattro,
         FrontAxle
+    }
+
+    public enum ModelType
+    {
+        A1,
+        A3,
+        A4,
+        A5,
+        A6,
+        A7,
+        A8,
+        Q3,
+        Q5,
+        Q8,
+        TT,
+        R8
     }
 }
