@@ -17,6 +17,8 @@ namespace AudiShop.Models
 
         [Required(ErrorMessage = "Car Drive is required.")]
         public CarDriveType CarDrive { get; set; }
+
+        [Required(ErrorMessage = "Created Date is required.")]
         public DateTime CreatedDate { get; set; }
 
         [Required(ErrorMessage = "Enter description.")]
