@@ -15,6 +15,7 @@ namespace AudiShop.DataAccess
 
         public DbSet<Model> Models { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Engine> Engines { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Categoria> Categories { get; set; }
 
