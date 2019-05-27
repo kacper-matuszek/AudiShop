@@ -76,6 +76,29 @@ namespace AudiShop.DataAccess
                 /*Diesel*/
             };
 
+            engines.ForEach(e => context.Engines.AddOrUpdate(e));
+            context.SaveChanges();
+
+            var models = new List<Model>
+            {
+                /* Petrol Models*/
+                new Model() {ModelID = 1, Name = ModelType.A1, CarDrive = CarDriveType.FrontAxle, CategoriaID = 1,
+                CreatedDate = DateTime.Now, Available = true, EngineID = 1, Package = PackageType.Sportback, Price = 87300},
+                new Model() {ModelID = 2, Name = ModelType.A1, CarDrive = CarDriveType.FrontAxle, CategoriaID = 1,
+                CreatedDate = DateTime.Now, Available = true, EngineID = 3, Package = PackageType.Sportback, Price = 106600},
+                new Model() {ModelID = 3, Name = ModelType.A1, CarDrive = CarDriveType.FrontAxle, CategoriaID = 1,
+                CreatedDate = DateTime.Now, Available = true, EngineID = 4, Package = PackageType.SLine, Price = 127000},
+                new Model() {ModelID =  5, Name = ModelType.A3, EngineID = 3, CarDrive = CarDriveType.FrontAxle, CategoriaID = 1,
+                CreatedDate = DateTime.Now, Available = true, Package = PackageType.Standard, Price = 112400},
+                new Model() {ModelID = 6, Name = ModelType.A3, EngineID = 7, CarDrive = CarDriveType.Quattro, CategoriaID = 2,
+                CreatedDate = DateTime.Now, Available = true, Package = PackageType.Standard, Price = 274300},
+                new Model() {ModelID = 7, Name = ModelType.A3, CarDrive = CarDriveType.Quattro}
+                /*Petrol Models*/
+            };
+
+            models.ForEach(m => context.Models.AddOrUpdate(m));
+            context.SaveChanges();
+
         }
     }
 }
