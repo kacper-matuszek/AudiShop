@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset = utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/CSS/default.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="~/CSS/audi-logo.png" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+    <div class="Wrapper">
+        <div class="LayoutHeader">
+            <nav class="Header-Navigation">
+                <a href="index.html"><img src="css/audi-logo.png" at="logo" /></a>
+                <ul>
+                    <li><a href=index.html>A1</a></li>
+                    <li><a href=index.html>A3</a></li>
+                    <li><a href=index.html>A4</a></li>
+                    <li><a href=index.html>A5</a></li>
+                    <li><a href=index.html>A6</a></li>
+                    <li><a href=index.html>A7</a></li>
+                    <li><a href=index.html>A8</a></li>
+                </ul>
+                <section class="LoginBasket">
+                    <div>
+                        <a href="#">
+                            <i class="fas fa-user"></i>
+                            <span>Zaloguj</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <i class="fas fa-shopping-basket"></i>
+                            <span>Koszyk</span>
+                        </a>
+                    </div>
+                </section>
+            </nav>
+        </div>
+        <div class="Wallpaper"></div>
+        <!--Body-->
+        <div class="LayoutCategories">
+            @RenderBody();
+        </div>
+        <!--Footer-->
+        <div class="LayoutFooter">
+            <div class="FooterContent">
+                <div>
+                    <!--Social Media-->
+                    <section class="Media">
+                        <label>MEDIA SPOŁECZNOŚCIOWE</label>
+                        <section>
+                            <a href="link" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="link" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="link" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="link" target="_blank"><i class="fab fa-youtube"></i></a>
+                        </section>
+                    </section>
+                    <!--Contact-->
+                    <section class="Media MediaColumn">
+                        <label>KONTAKT</label>
+                        <section>
+                            <address>
+                                <label><strong>AUDI Shop SA.</strong></label>
+                                <div class="Kontakt">
+                                    <label>E-mail: </label>
+                                    <span class="KontaktValue">audiShop@gmail.com</span>
+                                </div>
+                                <div class="Kontakt">
+                                    <label>Numer: </label>
+                                    <span class="KontaktValue">563 945 621</span>
+                                </div>
+                                <div class="Kontakt">
+                                    <span>Warszawa</span>
+                                    <span class="KontaktValue">ul. Nijaka 50</span>
+                                </div>
+                            </address>
+                        </section>
+                    </section>
+                    <!--Payment-->
+                    <section class="Media">
+                        <label>U NAS ZAPŁACISZ</label>
+                        <section>
+                            <a href="link" target="_blank"><i class="fab fa-cc-visa"></i></a>
+                            <a href="link" target="_blank"><i class="fab fa-paypal"></i></a>
+                            <a href="link" target="_blank"><i class="fab fa-cc-mastercard"></i></a>
+                        </section>
+                    </section>
+                </div>
+                <footer>
+                    <i>&copy;2019 Kacper Matuszek</i>
+                </footer>
+            </div>
+        </div>
+        </div>
+        @RenderSection("Scripts", false);
+</body>
+</html>
