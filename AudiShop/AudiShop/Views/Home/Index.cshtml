@@ -13,7 +13,7 @@
     <div class="VerticalContent">
         @foreach (var item in Model.Models)
         {   <label>
-                <a href=@Url.Action("List","Models", new { models = item})>
+                <a href=@Url.Action("List","Models", new { models = item.ToString()})>
                     <img src=@Url.PathOfModel(item.ToString())>
                     <label>@item</label>
                 </a>

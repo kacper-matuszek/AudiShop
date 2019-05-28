@@ -14,7 +14,7 @@ namespace AudiShop.Controllers
             return View();
         }
 
-        public ActionResult Lista()
+        public ActionResult Lista(string modelName)
         {
             return View();
         }
