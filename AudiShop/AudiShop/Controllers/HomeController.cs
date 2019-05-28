@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AudiShop.DataAccess;
+using AudiShop.Models;
+using AudiShop.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +11,18 @@ namespace AudiShop.Controllers
 {
     public class HomeController : Controller
     {
+        private AudiContext _db = new AudiContext();
+
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var models = Enum.GetValues(typeof(ModelType)).Cast<ModelType>();
+
+            var vm = new HomeViewModel()
+            {
+                Models = models
+            };
+            return View(vm);
         }
     }
 }

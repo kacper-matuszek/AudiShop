@@ -19,6 +19,11 @@ namespace AudiShop.DataAccess
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Categoria> Categories { get; set; }
 
+        static AudiContext()
+        {
+            Database.SetInitializer<AudiContext>(new AudiInitializer());
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

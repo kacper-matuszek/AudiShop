@@ -1,5 +1,6 @@
 namespace AudiShop.Migrations
 {
+    using AudiShop.DataAccess;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -15,6 +16,8 @@ namespace AudiShop.Migrations
 
         protected override void Seed(AudiShop.DataAccess.AudiContext context)
         {
+
+            AudiInitializer.SeedData(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
