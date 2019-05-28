@@ -6,23 +6,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/CSS/default.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="~/CSS/audi-logo.png" />
+    <link href=@Url.Content("~/CSS/default.css") rel="stylesheet" type="text/css" />
+    <link rel="icon" href=@Url.Content("~/CSS/audi-logo.png") />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
-<body>
+<body onload="SetHeightToAnotherEl()">
     <div class="Wrapper">
         <div class="LayoutHeader">
             <nav class="Header-Navigation">
                 <a href="index.html"><img src="css/audi-logo.png" at="logo" /></a>
                 <ul>
-                    <li><a href=index.html>A1</a></li>
-                    <li><a href=index.html>A3</a></li>
-                    <li><a href=index.html>A4</a></li>
-                    <li><a href=index.html>A5</a></li>
-                    <li><a href=index.html>A6</a></li>
-                    <li><a href=index.html>A7</a></li>
-                    <li><a href=index.html>A8</a></li>
+                    <li><a href=index.html>O nas</a></li>
+                    <li><a href=index.html>Sklep</a></li>
+                    <li><a href=index.html>Kontakt</a></li>
                 </ul>
                 <section class="LoginBasket">
                     <div>
@@ -42,8 +38,8 @@
         </div>
         <div class="Wallpaper"></div>
         <!--Body-->
-        <div class="LayoutCategories">
-            @RenderBody();
+        <div>
+            @RenderBody()
         </div>
         <!--Footer-->
         <div class="LayoutFooter">
@@ -96,6 +92,6 @@
             </div>
         </div>
         </div>
-        @RenderSection("Scripts", false);
+    <script src=@Url.Content("~/JS/BodyLoaded.js")></script>
 </body>
 </html>
