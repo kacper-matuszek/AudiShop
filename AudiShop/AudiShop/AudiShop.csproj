@@ -118,6 +118,11 @@
     <Content Include="Images\Models\A6.jpg" />
     <Content Include="Images\Models\A7.jpg" />
     <Content Include="Images\Models\A8.jpg" />
+    <Content Include="Images\Models\Q3.jpg" />
+    <Content Include="Images\Models\Q5.jpg" />
+    <Content Include="Images\Models\Q8.jpg" />
+    <Content Include="Images\Models\R8.jpg" />
+    <Content Include="Images\Models\TT.jpg" />
     <Content Include="JS\BodyLoaded.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -131,6 +136,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AppConfig.cs" />
+    <Compile Include="Helpers\UrlHelpers.cs" />
     <Compile Include="Migrations\201905281442235_Początek.cs" />
     <Compile Include="Migrations\201905281442235_Początek.Designer.cs">
       <DependentUpon>201905281442235_Początek.cs</DependentUpon>

@@ -1,4 +1,5 @@
 ﻿@model AudiShop.ViewModels.HomeViewModel
+@using AudiShop.Helpers
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
@@ -13,7 +14,7 @@
         @foreach (var item in Model.Models)
         {   <label>
                 <a href=@Url.Action("List","Models", new { models = item})>
-                    <img src="Images/Models/A1.jpg">
+                    <img src=@Url.PathOfModel(item.ToString())>
                     <label>@item</label>
                 </a>
             </label>
