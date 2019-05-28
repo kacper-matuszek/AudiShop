@@ -111,6 +111,14 @@
     <Content Include="CSS\audi-logo.png" />
     <Content Include="CSS\default.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Categories\Allroad.jpg" />
+    <Content Include="Images\Categories\Avant.jpg" />
+    <Content Include="Images\Categories\Coupé.jpg" />
+    <Content Include="Images\Categories\Limousine.jpg" />
+    <Content Include="Images\Categories\Sedan.jpg" />
+    <Content Include="Images\Categories\Sport.jpg" />
+    <Content Include="Images\Categories\Sportback.jpg" />
+    <Content Include="Images\Categories\SUV.jpg" />
     <Content Include="Images\Models\A1.jpg" />
     <Content Include="Images\Models\A3.jpg" />
     <Content Include="Images\Models\A4.jpg" />

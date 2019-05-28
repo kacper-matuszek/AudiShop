@@ -16,14 +16,14 @@ namespace AudiShop.DataAccess
         {
             var categories = new List<Categoria>
             {
-                new Categoria() {CategoriaID = 1, Name ="Sportback" },
-                new Categoria() {CategoriaID = 2, Name ="Limousine" },
-                new Categoria() {CategoriaID = 3, Name ="Sport" },
-                new Categoria() {CategoriaID = 4, Name ="Avant" },
-                new Categoria() {CategoriaID = 5, Name ="Allroad" },
-                new Categoria() {CategoriaID = 6, Name ="Coupé" },
-                new Categoria() {CategoriaID = 7, Name ="SUV" },
-                new Categoria() {CategoriaID = 8, Name ="Sedan" }
+                new Categoria() {CategoriaID = 1, Name ="Sportback",PictureName="Sportback.jpg" },
+                new Categoria() {CategoriaID = 2, Name ="Limousine", PictureName="Limousine.jpg" },
+                new Categoria() {CategoriaID = 3, Name ="Sport", PictureName="Sport.jpg" },
+                new Categoria() {CategoriaID = 4, Name ="Avant", PictureName="Avant.jpg" },
+                new Categoria() {CategoriaID = 5, Name ="Allroad", PictureName="Allroad.jpg" },
+                new Categoria() {CategoriaID = 6, Name ="Coupé", PictureName="Coupé.jpg" },
+                new Categoria() {CategoriaID = 7, Name ="SUV", PictureName="SUV.jpg" },
+                new Categoria() {CategoriaID = 8, Name ="Sedan", PictureName="Sedan.jpg" }
             };
 
             categories.ForEach(c => context.Categories.AddOrUpdate(c));
