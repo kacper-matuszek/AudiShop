@@ -1,6 +1,8 @@
-﻿using System;
+﻿using AudiShop.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -13,12 +15,43 @@ namespace AudiShop.Models
         public int EngineID { get; set; }
 
         [Required(ErrorMessage = "Enter model name.")]
+        [Column("Name")]
+        public string NameString
+        {
+            get => Name.ToString();
+            set
+            {
+                Name = value.ParseEnum<ModelType>();
+            }
+        }
+        [NotMapped]
         public ModelType Name { get; set; }
 
         [Required(ErrorMessage = "Car Drive is required.")]
+        [Column("CarDrive")]
+        public string CarDriveString
+        {
+            get => CarDrive.ToString();
+            set
+            {
+                CarDrive = value.ParseEnum<CarDriveType>();
+            }
+        }
+
+        [NotMapped]
         public CarDriveType CarDrive { get; set; }
 
         [Required(ErrorMessage = "Package is required.")]
+        public string PackageString
+        {
+            get => Package.ToString();
+            set
+            {
+                Package = value.ParseEnum<PackageType>();
+            }
+        }
+
+        [NotMapped]
         public PackageType Package { get; set; }
 
         [Required(ErrorMessage = "Created Date is required.")]
