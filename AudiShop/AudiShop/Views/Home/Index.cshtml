@@ -1,5 +1,6 @@
-﻿@model AudiShop.ViewModels.HomeViewModel
+﻿@model string
 @using AudiShop.Helpers
+@using System.Web.Optimization
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
@@ -7,18 +8,24 @@
 
 <div class="CategoriesContent">
     <div>
-        <span><a href="#">MODELE</a></span>
-        <span><a href="#">NADWOZIA</a></span>
+        <span>
+            @Ajax.ActionLink("MODELE","Models", new AjaxOptions
+   { UpdateTargetId = "bodyMenu",
+   InsertionMode = InsertionMode.Replace,
+     HttpMethod = "GET"
+   })
+        </span>
+        <span>
+            @Ajax.ActionLink("NADWOZIA","BodyWorks", new AjaxOptions
+           { UpdateTargetId = "bodyMenu",
+           InsertionMode = InsertionMode.Replace,
+             HttpMethod = "GET"
+           })
+        </span>
     </div>
-    <div class="VerticalContent">
-        @foreach (var item in Model.Models)
-        {   <label>
-                <a href=@Url.Action("List","Models", new { models = item.ToString()})>
-                    <img src=@Url.PathOfModel(item.ToString())>
-                    <label>@item</label>
-                </a>
-            </label>
-        }
+    <div class="VerticalContent" id="bodyMenu">
+        @Html.Action("Models")
     </div>
 </div>
+
 

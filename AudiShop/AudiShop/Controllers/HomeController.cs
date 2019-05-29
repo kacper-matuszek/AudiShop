@@ -16,13 +16,22 @@ namespace AudiShop.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var models = Enum.GetValues(typeof(ModelType)).Cast<ModelType>();
+            
+            return View();
+        }
 
-            var vm = new HomeViewModel()
-            {
-                Models = models
-            };
-            return View(vm);
+       public PartialViewResult Models()
+        {
+            var _res = Enum.GetValues(typeof(ModelType)).Cast<ModelType>().Select(x => x.ToString());
+
+            return PartialView("_Menu", _res);
+        }
+
+        public PartialViewResult BodyWorks()
+        {
+            var _res = _db.Categories.Select(x => x.Name);
+
+            return PartialView("_Menu", _res);
         }
     }
 }

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<string>
+@using AudiShop.Helpers
+
+
+@foreach (var item in Model)
+{<label>
+        <a href=@Url.Action("List","Models", new { models = item.ToString()})>
+            <img src=@Url.PathOfModel(item.ToString())>
+            <label>@item</label>
+        </a>
+    </label>
+}
