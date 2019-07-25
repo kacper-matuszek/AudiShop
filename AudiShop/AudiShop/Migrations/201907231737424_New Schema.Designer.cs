@@ -7,13 +7,13 @@ namespace AudiShop.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Początek : IMigrationMetadata
+    public sealed partial class NewSchema : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Początek));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NewSchema));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905281442235_Początek"; }
+            get { return "201907231737424_New Schema"; }
         }
         
         string IMigrationMetadata.Source

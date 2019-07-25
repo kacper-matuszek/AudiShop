@@ -153,13 +153,9 @@
     <Compile Include="Helpers\AppConfig.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\UrlHelpers.cs" />
-    <Compile Include="Migrations\201905281442235_Początek.cs" />
-    <Compile Include="Migrations\201905281442235_Początek.Designer.cs">
-      <DependentUpon>201905281442235_Początek.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905291756189_Structure of database has been changed.cs" />
-    <Compile Include="Migrations\201905291756189_Structure of database has been changed.Designer.cs">
-      <DependentUpon>201905291756189_Structure of database has been changed.cs</DependentUpon>
+    <Compile Include="Migrations\201907231737424_New Schema.cs" />
+    <Compile Include="Migrations\201907231737424_New Schema.Designer.cs">
+      <DependentUpon>201907231737424_New Schema.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -192,11 +188,8 @@
     <Folder Include="Images\Categories\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905281442235_Początek.resx">
-      <DependentUpon>201905281442235_Początek.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905291756189_Structure of database has been changed.resx">
-      <DependentUpon>201905291756189_Structure of database has been changed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907231737424_New Schema.resx">
+      <DependentUpon>201907231737424_New Schema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -212,9 +205,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56784</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56784/</IISUrl>
+          <IISUrl>http://localhost:59392/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

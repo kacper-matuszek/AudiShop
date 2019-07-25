@@ -3,7 +3,7 @@ namespace AudiShop.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Początek : DbMigration
+    public partial class NewSchema : DbMigration
     {
         public override void Up()
         {
@@ -24,9 +24,9 @@ namespace AudiShop.Migrations
                         ModelID = c.Int(nullable: false, identity: true),
                         CategoriaID = c.Int(nullable: false),
                         EngineID = c.Int(nullable: false),
-                        Name = c.Int(nullable: false),
-                        CarDrive = c.Int(nullable: false),
-                        Package = c.Int(nullable: false),
+                        Name = c.String(nullable: false),
+                        CarDrive = c.String(nullable: false),
+                        PackageString = c.String(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
                         Description = c.String(nullable: false),
                         Color = c.String(),
@@ -49,8 +49,8 @@ namespace AudiShop.Migrations
                         Capacity = c.Single(nullable: false),
                         HorsePower = c.Int(nullable: false),
                         KiloWat = c.Int(nullable: false),
-                        Type = c.Int(nullable: false),
-                        Emblem = c.Int(nullable: false),
+                        Type = c.String(nullable: false),
+                        Emblem = c.String(),
                         AmountCylinders = c.Int(nullable: false),
                         Turbo = c.Boolean(nullable: false),
                     })

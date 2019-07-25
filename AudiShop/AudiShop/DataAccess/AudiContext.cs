@@ -11,7 +11,9 @@ namespace AudiShop.DataAccess
     public class AudiContext : DbContext
     {
         public AudiContext()
-            :base("AudiContext"){}
+            :base("AudiContext"){
+            AppDomain.CurrentDomain.SetData("DataDirectory", "E:\\Microsoft SQL Server\\MSSQL14.KAC_DATA\\MSSQL\\DATA\\");
+        }
 
         public DbSet<Model> Models { get; set; }
         public DbSet<Order> Orders { get; set; }
