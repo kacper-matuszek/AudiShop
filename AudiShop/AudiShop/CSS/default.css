@@ -1,3 +1,4 @@
+@import "Animation.css";
 body
 {
     margin: 0;
@@ -50,6 +51,7 @@ body
 .Header-Navigation .LoginBasket > div a
 {
     display: flex;
+    position:relative;
     text-decoration: none;
     height: 100%;
     color: #F0F8FF;
@@ -57,14 +59,43 @@ body
     justify-content: center;
     align-items: center;
     padding: 9px;
+    z-index:1;
 }
 
-.Header-Navigation .LoginBasket div a:hover
-{
-    background: #bb0a30;
-    text-shadow: 2px 2px #000;
+.Header-Navigation > .LoginBasket > div > a:after{
+     content:" ";
+    display:block;
+    position:absolute;
+    height:100%;
+    width:0;
+    visibility:hidden;
+    background: #BB0A30;
+    left: -5%;
+    transition: .25s ease;
+    z-index:-1;
 }
-
+.Header-Navigation > .LoginBasket > div > a:hover:after{
+    left: 0;
+    width: 50%;
+    visibility: visible;
+}
+.Header-Navigation > .LoginBasket > div > a:before{
+    content: " ";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 0;
+    visibility: hidden;
+    background: #BB0A30;
+    right: -5%;
+    transition: .25s linear;
+    z-index:-1;
+}
+.Header-Navigation > .LoginBasket > div > a:hover:before{
+    right: 0;
+    width: 50%;
+    visibility: visible;
+}
 .Header-Navigation .LoginBasket div a span
 {
     font-style: italic;
@@ -127,6 +158,7 @@ body
     width: 50%;
     visibility:visible;
 }
+
 .Header-Navigation > ul > li:before
 {
     content:" ";
@@ -265,17 +297,31 @@ body
     left:0;
 }
 
-.CategoriesContent .VerticalContent
+.CategoriesContent > .VerticalContent::-webkit-scrollbar{
+    width: 0 !important;
+}
+.CategoriesContent > .VerticalContent
 {
     display: flex;
+    position:relative;
+    top:100%;
     flex-flow: row wrap;
     justify-content: center;
+    overflow-y:hidden;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
 }
-
+.slide-in {
+    animation: slide-in 1s forwards;
+}
+.slide-out{
+    animation: slide-out 1s forwards;
+}
 .VerticalContent > label
 {
     margin: 10px;
     padding: 5px;
+  
 }
 .CategoriesContent label > a:first-child
 {
@@ -336,6 +382,19 @@ body
     object-fit: cover;
 }
 
+.CategoriesContent > .VerticalContent + div {
+    position: relative;
+    bottom: 0;
+    margin: 3px;
+    padding: 2px;
+}
+#arrow{
+    font-size:30px;
+}
+.CategoriesContent > .VerticalContent + div:hover{
+    cursor:pointer;
+    text-shadow: 2px 2px #DC143C;
+}
 .LayoutFooter
 {
     position: relative;
@@ -425,8 +484,7 @@ body
 }
 
 [class ^= "fab"]:hover,
-.Media section a:hover
-{
+.Media section a:hover {
     text-shadow: 2px 2px #DC143C;
 }
 .Kontakt

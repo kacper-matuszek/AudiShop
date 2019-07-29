@@ -106,6 +106,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\Animation.css" />
     <Content Include="CSS\Audi Prologue 4K Ultra HD Desktop Wallpaper.jpg" />
     <Content Include="CSS\audi-logo.png" />
     <Content Include="CSS\default.css" />
