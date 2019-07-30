@@ -4,5 +4,7 @@
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 
-<h2>Lista</h2>
-
+<div class="CategoriesContent">
+    @Html.Action("ModelsMenu")
+    @Html.Partial("_ModelList")
+</div>

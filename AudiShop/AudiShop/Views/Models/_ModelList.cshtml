@@ -1,0 +1,14 @@
+﻿@model IEnumerable<AudiShop.Models.Model>
+@using AudiShop.Helpers
+
+<div class="VerticalContent">
+    @foreach (var item in Model)
+    {
+        <label>
+             <a href=@Url.Action("Details","Models", new { id = item.ModelID})>
+                <img src=@Url.PathOfModel(item.Name.ToString())>
+                <label>@item.NameString</label>
+            </a>
+        </label>
+    }
+</div>

@@ -14,6 +14,11 @@ namespace AudiShop
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "ModelList",
+                url: "Category/{modelName}",
+                defaults: new { controller = "Models", action = "Lista" });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

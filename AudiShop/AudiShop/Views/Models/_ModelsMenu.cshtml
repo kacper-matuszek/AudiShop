@@ -1,0 +1,15 @@
+﻿@model IEnumerable<AudiShop.Models.Categoria>
+
+
+    <div>
+        @foreach (var bodyWork in Model)
+        {
+            <span>
+                <a href="@Url.Action("Lista", "Models", new { modelName = bodyWork.Name.ToString() })">
+                    @bodyWork.Name
+                </a>
+            </span>
+        }
+    </div>
+
+
