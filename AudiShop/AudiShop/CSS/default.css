@@ -1,9 +1,15 @@
 @import "Animation.css";
+
+:root {
+    --borders-color: #BB0A30;
+    --bg-color: #F0F8FF;
+}
+
 body
 {
     margin: 0;
     padding: 0;
-    color: #F0F8FF;
+    color: var(--bg-color);
 }
 
 .Wrapper
@@ -54,7 +60,7 @@ body
     position:relative;
     text-decoration: none;
     height: 100%;
-    color: #F0F8FF;
+    color: var(--bg-color);
     flex-flow: column;
     justify-content: center;
     align-items: center;
@@ -69,7 +75,7 @@ body
     height:100%;
     width:0;
     visibility:hidden;
-    background: #BB0A30;
+    background: var(--borders-color);
     left: -5%;
     transition: .25s ease;
     z-index:-1;
@@ -86,7 +92,7 @@ body
     height: 100%;
     width: 0;
     visibility: hidden;
-    background: #BB0A30;
+    background: var(--borders-color);
     right: -5%;
     transition: .25s linear;
     z-index:-1;
@@ -148,7 +154,7 @@ body
     height:100%;
     width:0;
     visibility:hidden;
-    background: #BB0A30;
+    background: var(--borders-color);
     left: -5%;
     transition: .25s ease;
 }
@@ -167,7 +173,7 @@ body
     height:100%;
     width:0;
     visibility:hidden;
-    background: #BB0A30;
+    background: var(--borders-color);
     right: -5%;
     transition: .25s linear;
 }
@@ -185,7 +191,7 @@ body
     font-weight: bold;
     text-align: center;
     text-shadow: 2px 2px #000;
-    color:#F0F8FF;
+    color:var(--bg-color);;
     display: block;
     padding: 20px;
     width: 100%;
@@ -205,7 +211,7 @@ body
 {
     position: relative; background: #000;
     width: 100%;
-    border-top: 3px solid #BB0A30;
+    border-top: 3px solid var(--borders-color);
 }
 
 .BodySceleton
@@ -234,7 +240,7 @@ body
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    margin: 5px 0 0 0;
+    margin: 5px 0 5px 0;
 }
 
 .CategoriesContent > div:first-child > span:not(:first-child)
@@ -255,7 +261,7 @@ body
     padding: 5px;
     margin: 0 6px;
     font-family:fantasy;
-    color: #F0F8FF;
+    color: var(--bg-color);
     text-decoration: none;
     text-align: center;
     font-size: 1.4em;
@@ -297,8 +303,8 @@ body
     left:0;
 }
 
-.CategoriesContent > .VerticalContent::-webkit-scrollbar{
-    width: 0 !important;
+.VerticalContent::-webkit-scrollbar{
+    width: 5px;
 }
 .CategoriesContent > .VerticalContent
 {
@@ -308,8 +314,7 @@ body
     flex-flow: row wrap;
     justify-content: center;
     overflow-y:hidden;
-    overflow: -moz-scrollbars-none;
-    -ms-overflow-style: none;
+    
 }
 .slide-in {
     animation: slide-in 1s forwards;
@@ -329,7 +334,7 @@ body
     position: relative;
     flex-direction: column;
     text-decoration: none;
-    color: #F0F8FF;
+    color: var(--bg-color);;
     text-align: center;
     max-width: 300px;
     box-sizing: border-box;
@@ -359,8 +364,8 @@ body
 }
 .CategoriesContent label > a:hover:first-child img + label
 {
-    border-top: 2px solid #F0F8FF;
-    border-bottom: 2px solid #F0F8FF;
+    border-top: 2px solid var(--bg-color);
+    border-bottom: 2px solid var(--bg-color);
 }
 .VerticalContent label a img + label
 {
@@ -456,7 +461,7 @@ body
 
 .Media section a
 {
-    color: #F0F8FF;
+    color: var(--bg-color);;
     padding: 4px;
     margin: 4px;
 }
@@ -505,4 +510,23 @@ body
     padding: .5em;
     margin: 5px;
     text-shadow: 2px 2px #DC143C;
+}
+
+/*-----------SCROLLBAR-------------*/
+::-webkit-scrollbar{
+    width: 16px;
+    background-color: #000;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
+    border-radius: 10px;
+    background-color: #000;
+}
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background: var(--borders-color);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #e61541;
 }
