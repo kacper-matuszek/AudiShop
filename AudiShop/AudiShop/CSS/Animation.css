@@ -17,3 +17,18 @@
         overflow-y:visible;
     }
 }
+@keyframes slide-in-100{
+    from{
+        height: 100%;
+    }to{
+         height:0%;
+     }
+}
+@keyframes slide-out-100{
+    from{
+        height:0%;
+    }
+    to{
+        height:100%;
+    }
+}

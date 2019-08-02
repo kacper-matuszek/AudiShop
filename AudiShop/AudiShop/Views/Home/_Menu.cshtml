@@ -3,7 +3,8 @@
 
 
 @foreach (var item in Model)
-{<label>
+{
+    <label>
         <a href=@Url.Action("Lista","Models", new { modelName = item.ToString()})>
             <img src=@Url.PathOfModel(item.ToString())>
             <label>@item</label>

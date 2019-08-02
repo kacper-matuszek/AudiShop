@@ -1,0 +1,71 @@
+﻿@import "root.css";
+@import "Animation.css";
+.MenuFlow {
+    flex-flow: column;
+    height:100%;
+}
+/*Collapsible*/
+.Collapsable {
+    cursor: pointer;
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content:flex-end;
+    align-items: center;
+    width: 100%;
+    margin: 4px;
+    border:none;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    font-weight: 123px;
+    font-family: fantasy;
+    font-size: 1.7em;
+    letter-spacing: 3px;
+    background-color: #000;
+    border-bottom: 2px solid var(--borders-color);
+    color: var(--bg-color);
+    z-index: 1;
+}
+.plus{
+   background-color: var(--borders-color);
+   margin: 3px 10px 3px 5px;
+   height: 5px;
+   position:relative;
+   width: 25px;
+   opacity: 0.5;
+   transition: .25s linear;
+}
+.Collapsable:hover > .plus{
+    opacity:0.85;
+}
+.changed:after{
+    background-color: var(--borders-color);
+    content: " ";
+    height: 25px;
+    top: -10px;
+    width: 5px;
+    position: absolute;
+    right: 10px;
+}
+.CollapseContent{
+    display:flex;
+    width:100%;
+    position:relative;
+    flex-flow:column;
+    overflow:hidden;
+
+}
+.CollapseContent > span{
+    width:100%;
+    box-sizing:border-box;
+
+}
+.CollapseContent > span > a{
+    display:block;
+    box-sizing:border-box;
+    width:100%;
+    text-align:left;
+}
+.CollapseContent > span:first-child{
+    border-left: 2px solid var(--borders-color);
+}

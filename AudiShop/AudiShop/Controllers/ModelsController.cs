@@ -1,4 +1,5 @@
 ﻿using AudiShop.DataAccess;
+using AudiShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,11 @@ namespace AudiShop.Controllers
 
         public ActionResult Lista(string modelName)
         {
+            if (modelName.ToUpperInvariant().Length == 2)
+            {
+                var _modList = _db.Models.Where(m => m.NameString.ToUpper() == modelName.ToUpper()).ToList();
+                return View(_modList);
+            }
             var catList = _db.Categories.Include("Models").Where(c => c.Name.ToUpper() == modelName.ToUpper()).Single();
             var models = catList.Models.ToList();
             return View(models);
@@ -32,9 +38,16 @@ namespace AudiShop.Controllers
         [ChildActionOnly]
         public ActionResult ModelsMenu()
         {
-            var _res = _db.Categories.ToList();
+            var _categories = _db.Categories.Select(x => x.Name).ToArray();
+            var _models = Enum.GetValues(typeof(ModelType)).Cast<ModelType>().Select(x => x.ToString()).ToArray();
 
-            return PartialView("_ModelsMenu",_res);
+            string[][] _result = new string[][]
+            {
+                _categories,
+                _models
+            };
+            
+            return PartialView("_ModelsMenu",_result);
         }
     }
 }

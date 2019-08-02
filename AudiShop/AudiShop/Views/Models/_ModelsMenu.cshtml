@@ -1,15 +1,34 @@
-﻿@model IEnumerable<AudiShop.Models.Categoria>
+﻿@model string[][]
 
-
-    <div>
-        @foreach (var bodyWork in Model)
-        {
-            <span>
-                <a href="@Url.Action("Lista", "Models", new { modelName = bodyWork.Name.ToString() })">
-                    @bodyWork.Name
-                </a>
-            </span>
-        }
+    <div class="MenuFlow">
+       <button class="Collapsable">
+           <span>NADWOZIA</span>
+           <div class="plus"></div>
+       </button>
+        <div class="CollapseContent">
+            @foreach (var bodyWork in Model[0])
+            {
+                <span  class="MenuList">
+                    <a href="@Url.Action("Lista", "Models", new { modelName = bodyWork.ToString() })">
+                        @bodyWork
+                    </a>
+                </span>
+            }
+        </div>
+        <button class="Collapsable">
+            <span>MODELE</span>
+            <div class="plus"></div>
+        </button>
+        <div class="CollapseContent">
+            @foreach (var nameModel in Model[1])
+            {
+                <span class="MenuList">
+                    <a href="@Url.Action("Lista", "Models", new { modelName = nameModel.ToString() })">
+                        @nameModel
+                    </a>
+                </span>
+            }
+        </div>
     </div>
 
 

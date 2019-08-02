@@ -1,10 +1,5 @@
 @import "Animation.css";
-
-:root {
-    --borders-color: #BB0A30;
-    --bg-color: #F0F8FF;
-}
-
+@import "root.css";
 body
 {
     margin: 0;
@@ -191,7 +186,7 @@ body
     font-weight: bold;
     text-align: center;
     text-shadow: 2px 2px #000;
-    color:var(--bg-color);;
+    color:var(--bg-color);
     display: block;
     padding: 20px;
     width: 100%;
@@ -227,11 +222,13 @@ body
 .CategoriesContent
 {
     display: flex;
-    flex-flow: column;
     margin: 0 auto;
     width: 100%;
     justify-content: flex-start;
     align-items: flex-start;
+}
+.CategoriesContentFlowColumn{
+    flex-flow: column;
 }
 
 .CategoriesContent > div:first-child
@@ -239,21 +236,21 @@ body
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     margin: 5px 0 5px 0;
 }
 
-.CategoriesContent > div:first-child > span:not(:first-child)
+.MenuList:not(:first-child)
 {
-    border-left: 2px solid #bb0a30;
+    border-left: 2px solid var(--borders-color);
 }
 
-.CategoriesContent > div:first-child > span
+.MenuList
 {
     position: relative;
     z-index: 1;
 }
-.CategoriesContent > div:first-child > span > a
+.MenuList > a
 {
     font-weight: 123px;
     display: block;
@@ -263,13 +260,12 @@ body
     font-family:fantasy;
     color: var(--bg-color);
     text-decoration: none;
-    text-align: center;
     font-size: 1.4em;
     letter-spacing: 3px;
-    z-index: 1;
+    z-index:1;
 }
 
-.CategoriesContent > div:first-child > span:nth-child(odd)::after {
+.MenuList:nth-child(odd)::after {
     content: " ";
     display: block;
     position: absolute;
@@ -277,12 +273,12 @@ body
     left:100%;
     width: 0;
     height:100%;
-    background: #bb0a30;
+    background: var(--borders-color);
     opacity:0;
     visibility:hidden;
     transition: .25s linear;
 }
-.CategoriesContent > div:first-child > span:nth-child(even)::after {
+.MenuList:nth-child(even)::after {
     content: " ";
     display: block;
     position: absolute;
@@ -290,12 +286,12 @@ body
     right:100%;
     width: 0;
     height:100%;
-    background: #bb0a30;
+    background: var(--borders-color);
     opacity:0;
     visibility:hidden;
     transition: .25s linear;
 }
-.CategoriesContent > div:first-child > span:hover::after {
+.MenuList:hover::after {
     opacity:1;
     width:100%;
     visibility:visible;

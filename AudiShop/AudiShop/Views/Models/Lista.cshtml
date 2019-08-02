@@ -3,6 +3,10 @@
     ViewBag.Title = "Lista";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
+@section Styles{
+    <link href=@Url.Content("~/CSS/List.css") rel="stylesheet" type="text/css" />
+
+}
 
 <div class="CategoriesContent">
     @Html.Action("ModelsMenu")

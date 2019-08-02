@@ -6,21 +6,22 @@
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 
-<div class="CategoriesContent">
+<div class="CategoriesContent CategoriesContentFlowColumn">
     <div>
-        <span>
-            @Ajax.ActionLink("MODELE","Models", new AjaxOptions
-   { UpdateTargetId = "bodyMenu",
-   InsertionMode = InsertionMode.Replace,
-     HttpMethod = "GET"
-   })
-        </span>
-        <span>
-            @Ajax.ActionLink("NADWOZIA","BodyWorks", new AjaxOptions
-           { UpdateTargetId = "bodyMenu",
+        <span class="MenuList">
+            @Ajax.ActionLink(linkText: "MODELE",actionName: "Models",ajaxOptions: new AjaxOptions
+       { UpdateTargetId = "bodyMenu",
            InsertionMode = InsertionMode.Replace,
-             HttpMethod = "GET"
-           })
+           HttpMethod = "GET"
+       })
+        </span>
+        <span class="MenuList">
+            @Ajax.ActionLink(linkText:"NADWOZIA", actionName:"BodyWorks", ajaxOptions: new AjaxOptions
+       {
+           UpdateTargetId = "bodyMenu",
+           InsertionMode = InsertionMode.Replace,
+           HttpMethod = "GET"
+       })
         </span>
     </div>
     <div class="VerticalContent slide-in" id="bodyMenu">

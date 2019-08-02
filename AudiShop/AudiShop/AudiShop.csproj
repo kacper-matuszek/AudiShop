@@ -110,6 +110,8 @@
     <Content Include="CSS\Audi Prologue 4K Ultra HD Desktop Wallpaper.jpg" />
     <Content Include="CSS\audi-logo.png" />
     <Content Include="CSS\default.css" />
+    <Content Include="CSS\List.css" />
+    <Content Include="CSS\root.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\Models\Allroad.jpg" />
     <Content Include="Images\Models\Avant.jpg" />
@@ -133,6 +135,7 @@
     <Content Include="Images\Models\TT.jpg" />
     <Content Include="JS\BodyLoaded.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="JS\List.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
