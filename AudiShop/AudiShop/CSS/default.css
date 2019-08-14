@@ -202,11 +202,12 @@ body
    
 }
 
-.LayoutCategories
-{
-    position: relative; background: #000;
+.LayoutCategories {
+    position: relative;
+    background: #000;
     width: 100%;
     border-top: 3px solid var(--borders-color);
+    background: #000;
 }
 
 .BodySceleton
@@ -217,27 +218,26 @@ body
     justify-content:flex-start;
     align-items: flex-start;
     width: 80%;
+
 }
 
-.CategoriesContent
-{
+.CategoriesContent {
     display: flex;
     margin: 0 auto;
     width: 100%;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: stretch;
 }
 .CategoriesContentFlowColumn{
     flex-flow: column;
 }
 
-.CategoriesContent > div:first-child
-{
+.CategoriesContentFlowColumn > div:first-child {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
-    margin: 5px 0 5px 0;
+    margin: .2em 0em .2em 0em;
 }
 
 .MenuList:not(:first-child)

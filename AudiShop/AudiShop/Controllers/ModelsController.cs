@@ -25,9 +25,9 @@ namespace AudiShop.Controllers
                 var _modList = _db.Models.Where(m => m.NameString.ToUpper() == modelName.ToUpper()).ToList();
                 return View(_modList);
             }
-            var catList = _db.Categories.Include("Models").Where(c => c.Name.ToUpper() == modelName.ToUpper()).Single();
-            var models = catList.Models.ToList();
-            return View(models);
+            var _catList = _db.Categories.Where(c => c.Name.ToUpper() == modelName.ToUpper()).Single();
+            var _models = _catList.Models.ToList();
+            return View(_models);
         }
 
         public ActionResult Details(int id)
