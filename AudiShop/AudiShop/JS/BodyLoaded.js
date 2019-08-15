@@ -9,7 +9,6 @@ function SetHeightToAnotherEl()
 
 function expandMenu() {
     var element = document.getElementsByClassName("arrow")[0];
-
     if (element.classList.contains("fa-arrow-down")) {
         element.classList.remove("fa-arrow-down");
         element.classList.add("fa-arrow-up");
@@ -24,5 +23,9 @@ $(document).ready(function () {
     $(".arrow").click(function () {
         $(".VerticalContent").toggleClass("slide-out");
         $(".VerticalContent").toggleClass("slide-in");
+        $(".VerticalContent").animate({
+            scrollTop: 0
+        }, 500);
+        expandMenu();
     });
 });

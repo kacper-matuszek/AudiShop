@@ -1,19 +1,19 @@
 ﻿@keyframes slide-in {
     0% {
-        height: 75vh;
+        height: 45em;
         overflow-y: hidden;
     }
 
     100% {
-        height: 26.5vh;
+        height: 15.3em;
     }
 }
 @keyframes slide-out{
     from{
-        height:26.5vh;
+        height:15.3em;
     }
     to{
-        height:75vh;
+        height:45em;
         overflow-y:visible;
     }
 }

@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     ToggleMenu();
     $(".LayoutCategories").addClass("LayoutList");
+    
 });
 
 function ToggleMenu() {
@@ -10,4 +11,5 @@ function ToggleMenu() {
         $(this).next("div").slideToggle("slow");
         $(this).children("div").toggleClass("changed");
     });
+
 }
