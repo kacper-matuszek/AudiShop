@@ -10,19 +10,82 @@
 }
 <div class="CategoriesContent">
     @Html.Action("ModelsMenu")
-    <div class="sceletonModel">
+    <div class="sceletonModel modelBackground">
         <div class="headerModel">
             <div>
                 <img src=@Url.PathOfModel(Model.NameString) />
             </div>
             <div>
-                <h2>Audi @Model.NameString</h2>
+                <h2 class="Banner">Audi @Model.NameString</h2>
                 <div>
                     <h1>@string.Format("{0: ### ###}",Model.Price) PLN</h1>
                     <button>
                         @Html.ActionLink("Kup Teraz", "AddToTrolley","Trolley", new { id = Model.ModelID}, null)
                     </button>
                     <button>@Html.ActionLink("Dodaj do Koszyka", "AddToTrolley","Trolley", new { id = Model.ModelID}, null)</button>
+                </div>
+            </div>
+        </div>
+        <div class="headerModel">
+            <div class="sceletonModel">
+                <div class="sceletonBanner">
+                    <h2 class="Banner">Ogólne</h2>
+                </div>
+                <div class="infoModel">
+                    <div class="section">
+                        <label>Rok produkcji: </label>
+                        <span>@Model.CreatedDate.Year</span>
+                    </div>
+                    <div class="section">
+                        <label>Pakiet: </label>
+                        @if (Model.Package == AudiShop.Models.PackageType.SLine)
+                        {
+                            <span>S-Line</span>
+                        }
+                        else
+                        {
+                            <span>@Model.PackageString</span>
+                        }
+                    </div>
+                    <div class="section">
+                        <label>Kolor: </label>
+                        <span>@Model.Color</span>
+                    </div>
+                    <div class="section">
+                        <label>Nadwozie: </label>
+                        <span>@Model.Categoria.Name</span>
+                    </div>
+                    <div class="section">
+                        <label>Napęd: </label>
+                        <span>@Model.CarDriveString</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sceletonModel">
+                <div class="sceletonBanner">
+                    <h2 class="Banner">Silnik</h2>
+                </div>
+                <div class="infoModel">
+                    <div class="section">
+                        <label>Kod silnika: </label>
+                        <span>@Model.Engine.Code</span>
+                    </div>
+                    <div class="section">
+                        <label>Paliwo: </label>
+                        <span>@Model.Engine.Type</span>
+                    </div>
+                    <div class="section">
+                        <label>Pojemność silnika: </label>
+                        <span>@Model.Engine.Capacity @Model.Engine.Emblem</span>
+                    </div>
+                    <div class="section">
+                        <label>Ilość cylindrów: </label>
+                        <span>@Model.Engine.AmountCylinders</span>
+                    </div>
+                    <div class="section">
+                        <label>Moc: </label>
+                        <span>@Model.Engine.HorsePower KM / @Model.Engine.KiloWat KW</span>
+                    </div>
                 </div>
             </div>
         </div>

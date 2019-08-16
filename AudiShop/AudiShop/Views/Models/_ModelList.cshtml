@@ -32,6 +32,12 @@
                                     <span>@car.Engine.HorsePower KM / @car.Engine.KiloWat KW</span>
                                 </div>
                                 <div class="section">
+                                    <label>Data produkcji: </label>
+                                    <span> @car.CreatedDate.ToShortDateString()</span>
+                                </div>
+                            </div>
+                            <div class="sceletonSection">
+                                <div class="section">
                                     <label>Pakiet: </label>
                                     @if (car.Package == AudiShop.Models.PackageType.SLine)
                                     {
@@ -42,8 +48,6 @@
                                         <span>@car.PackageString</span>
                                     }
                                 </div>
-                            </div>
-                            <div class="sceletonSection">
                                 <div class="section">
                                     <label>Quattro: </label>
                                     @if (car.CarDrive == AudiShop.Models.CarDriveType.Quattro)

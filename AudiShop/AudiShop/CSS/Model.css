@@ -5,7 +5,22 @@
     flex-direction: column;
     width: 100%;
     position: relative;
+}
+.modelBackground {
     background: linear-gradient(180deg, rgba(0,0,0,0.8729866946778712) 32%, rgba(222,222,222,0) 100%, rgba(25,14,14,0) 100%);
+}
+.sceletonBanner {
+    position: relative;
+    margin: .2em;
+    padding: .3em;
+    width: 100%;
+    min-height: 7em;
+}
+.sceletonBanner > h2 {
+    top: 0;
+    left: 0;
+    margin: 0;
+    font-size: 1.83em;
 }
 .headerModel {
     display: flex;
@@ -28,15 +43,18 @@
 }
 .headerModel > div > h2 {
     padding: .33em;
-    position: absolute;
     font-size: 1.83em;
     text-align: right;
-    text-shadow: 3px 3px 2px #000;
     top: -1.58em;
     right: -.8em;
-    background: rgb(112, 0, 33);
 }
-.headerModel > div > h2::after {
+.Banner {
+    position: absolute;
+    background: rgb(112, 0, 33);
+    text-shadow: 3px 3px 2px #000;
+    padding: .3em;
+}
+.Banner::after {
     display: block;
     position: absolute;
     content: " ";
@@ -47,7 +65,7 @@
     border-right: 2.5em  transparent;
     border-left: 3em solid transparent;
 }
-.headerModel > div > h2::before {
+.Banner::before {
     display: block;
     position: absolute;
     content: " ";
@@ -95,7 +113,7 @@
 }
 .headerModel > div > div > button:hover {
     -webkit-animation: none;
-    background: rgba(250, 10, 10, .8);
+    background: #e61541;
     cursor: pointer;
 }
 .headerModel > div > div > button > a {
