@@ -7,7 +7,7 @@
        {
            <div class="containerDetails">
             <div>
-                <a href="#">
+                <a href=@Url.Action("Details", "Models", new { id = car.ModelID})>
                     <div>
                         <img src=@Url.PathOfModel(car.NameString)>
                     </div>
@@ -16,7 +16,7 @@
             <div>
                 <a href="#"><h2>Audi @car.NameString</h2></a>
                 <div class="details">
-                    <a href="#">
+                    <a href="@Url.Action("Details", "Models", new { id = car.ModelID})">
                         <div class="priceBuy">
                             <h2>@string.Format("{0: ### ### zł}", car.Price)</h2>
                             <span>Kup Teraz</span>

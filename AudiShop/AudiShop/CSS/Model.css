@@ -1,0 +1,106 @@
+﻿.sceletonModel {
+    display: flex;
+    margin: 0 .3em;
+    padding: 1em;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8729866946778712) 32%, rgba(222,222,222,0) 100%, rgba(25,14,14,0) 100%);
+}
+.headerModel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    padding: .3em;
+}
+.headerModel > div {
+    display: flex;
+    position: relative;
+    padding: .3em;
+    width: 100%;
+    max-height: 65em;
+
+}
+.headerModel > div > img {
+    object-fit: cover;
+    width: 100%;
+}
+.headerModel > div > h2 {
+    padding: .33em;
+    position: absolute;
+    font-size: 1.83em;
+    text-align: right;
+    text-shadow: 3px 3px 2px #000;
+    top: -1.58em;
+    right: -.8em;
+    background: rgb(112, 0, 33);
+}
+.headerModel > div > h2::after {
+    display: block;
+    position: absolute;
+    content: " ";
+    width: 0px;
+    height: 0px;
+    right: 0;
+    border-top: 1.5em solid rgb(112, 0, 33);
+    border-right: 2.5em  transparent;
+    border-left: 3em solid transparent;
+}
+.headerModel > div > h2::before {
+    display: block;
+    position: absolute;
+    content: " ";
+    width: 0px;
+    height: 0px;
+    left: 0;
+    bottom: -1.1em;
+    border-top: 1.5em solid rgb(112, 0, 33);
+    border-right: 3em solid transparent;
+    border-left: 2.5em  transparent;
+}
+.headerModel > div > div {
+    display: flex;
+    flex-flow: column;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items:stretch;
+    position: relative;
+    height: 100%;
+    width:100%;
+}
+.headerModel > div > div > h1 {
+    display: block;
+    vertical-align: middle;
+    text-align: center;
+}
+@keyframes pulse {
+    20%, 100% {
+        box-shadow: 0 0 0 2.3em rgba(112, 0, 33, 0);
+    }
+}
+.headerModel > div > div > button {
+    font-size: 100%;
+    border: 0;
+    padding: .5em;
+    margin: .5em;
+    text-shadow: 2px 2px 2px #000;
+    background-color: #700021;
+    color: #F1F1F1;
+    border: 2px solid transparent;
+    border-radius: .3em;
+    box-shadow: 0 0 0 0 rgba(112, 0, 33, .7);
+    transition: .25s ease;
+    -webkit-animation: pulse 5s infinite cubic-bezier(.45, 0, 0, 1);
+}
+.headerModel > div > div > button:hover {
+    -webkit-animation: none;
+    background: rgba(250, 10, 10, .8);
+    cursor: pointer;
+}
+.headerModel > div > div > button > a {
+    text-decoration: none;
+    color: #F1F1F1;
+    display: block;
+    width: 100%;
+}

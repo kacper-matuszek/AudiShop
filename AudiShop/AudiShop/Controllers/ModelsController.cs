@@ -32,7 +32,9 @@ namespace AudiShop.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var _carModel = _db.Models.Find(id);
+
+            return View(_carModel);
         }
 
         [ChildActionOnly]

@@ -116,6 +116,7 @@
     top: 0;
     background: rgb(25,14,14);
     background: linear-gradient(90deg, rgba(25,14,14,0) 50%, rgba(255,239,239,0.4023984593837535) 50%, rgba(25,14,14,0) 79%);
+    visibility: collapse;
     background-size: 200% auto;
     background-position: left;
     transition: .35s ease;
@@ -123,6 +124,7 @@
 }
 .containerDetails:hover:after {
      background-position: right;
+     visibility: visible;
 }
 .containerDetails > div:first-child {
     position: relative;

@@ -1,0 +1,30 @@
+﻿@model AudiShop.Models.Model
+@using AudiShop.Helpers
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section Styles{
+    <link href=@Url.Content("~/CSS/List.css") rel="stylesheet" type="text/css" />
+    <link href=@Url.Content("~/CSS/Model.css") rel="stylesheet" type="text/css" />
+}
+<div class="CategoriesContent">
+    @Html.Action("ModelsMenu")
+    <div class="sceletonModel">
+        <div class="headerModel">
+            <div>
+                <img src=@Url.PathOfModel(Model.NameString) />
+            </div>
+            <div>
+                <h2>Audi @Model.NameString</h2>
+                <div>
+                    <h1>@string.Format("{0: ### ###}",Model.Price) PLN</h1>
+                    <button>
+                        @Html.ActionLink("Kup Teraz", "AddToTrolley","Trolley", new { id = Model.ModelID}, null)
+                    </button>
+                    <button>@Html.ActionLink("Dodaj do Koszyka", "AddToTrolley","Trolley", new { id = Model.ModelID}, null)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

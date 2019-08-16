@@ -111,6 +111,7 @@
     <Content Include="CSS\audi-logo.png" />
     <Content Include="CSS\default.css" />
     <Content Include="CSS\List.css" />
+    <Content Include="CSS\Model.css" />
     <Content Include="CSS\root.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\Models\Allroad.jpg" />
@@ -149,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModelsController.cs" />
+    <Compile Include="Controllers\TrolleyController.cs" />
     <Compile Include="DataAccess\AudiContext.cs" />
     <Compile Include="DataAccess\AudiInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -182,6 +184,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Models\_ModelsMenu.cshtml" />
     <Content Include="Views\Models\_ModelList.cshtml" />
+    <Content Include="Views\Models\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -192,6 +195,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Categories\" />
+    <Folder Include="Views\Trolley\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201907231737424_New Schema.resx">
