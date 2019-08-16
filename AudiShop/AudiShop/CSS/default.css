@@ -217,7 +217,7 @@ body
     margin: 0 auto;
     justify-content:flex-start;
     align-items: flex-start;
-    width: 80%;
+    width: 90%;
 
 }
 
@@ -290,7 +290,7 @@ body
     visibility:hidden;
     transition: .25s linear;
 }
-.MenuList:hover::after {
+.MenuList:hover::after{
     opacity:1;
     width:100%;
     visibility:visible;

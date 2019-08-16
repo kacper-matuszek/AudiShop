@@ -3,395 +3,64 @@
 
 <div class="sceletonList" >
     <div class="list">
-        <div class="containerDetails">
+       @foreach (var car in Model)
+       {
+           <div class="containerDetails">
             <div>
                 <a href="#">
                     <div>
-                        <img src="~/Images/Models/Coupé.jpg">
+                        <img src=@Url.PathOfModel(car.NameString)>
                     </div>
                 </a>
             </div>
             <div>
-                <a href="#"><h2>Audi TT</h2></a>
+                <a href="#"><h2>Audi @car.NameString</h2></a>
                 <div class="details">
                     <a href="#">
                         <div class="priceBuy">
-                            <h2>CENA</h2>
+                            <h2>@string.Format("{0: ### ### zł}", car.Price)</h2>
                             <span>Kup Teraz</span>
                         </div>
                         <div class="configuration">
                             <div class="sceletonSection">
                                 <div class="section">
                                     <label>Silnik:</label>
-                                    <span>4.2 V8</span>
+                                    <span>@String.Format("{0:0.0}", car.Engine.Capacity) @car.Engine.Emblem</span>
                                 </div>
                                 <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
+                                    <label>Moc: </label>
+                                    <span>@car.Engine.HorsePower KM / @car.Engine.KiloWat KW</span>
                                 </div>
                                 <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
+                                    <label>Pakiet: </label>
+                                    @if (car.Package == AudiShop.Models.PackageType.SLine)
+                                    {
+                                        <span>S-Line</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@car.PackageString</span>
+                                    }
                                 </div>
                             </div>
                             <div class="sceletonSection">
                                 <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
+                                    <label>Quattro: </label>
+                                    @if (car.CarDrive == AudiShop.Models.CarDriveType.Quattro)
+                                    {
+                                        <span>true</span>
+                                    }
+                                    else
+                                    {
+                                        <span>false</span>
+                                    }
                                 </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="containerDetails">
-            <div>
-                <a href="#">
-                    <div>
-                        <img src="~/Images/Models/Sedan.jpg">
-                    </div>
-                </a>
-            </div>
-            <div>
-                <a href="#"><h2>Audi TT</h2></a>
-                <div class="details">
-                    <a href="#">
-                        <div class="priceBuy">
-                            <h2>CENA</h2>
-                            <span>Kup Teraz</span>
-                        </div>
-                        <div class="configuration">
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="containerDetails">
-            <div>
-                <a href="#">
-                    <div>
-                        <img src="~/Images/Models/Coupé.jpg">
-                    </div>
-                </a>
-            </div>
-            <div>
-                <a href="#"><h2>Audi TT</h2></a>
-                <div class="details">
-                    <a href="#">
-                        <div class="priceBuy">
-                            <h2>CENA</h2>
-                            <span>Kup Teraz</span>
-                        </div>
-                        <div class="configuration">
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="containerDetails">
-            <div>
-                <a href="#">
-                    <div>
-                        <img src="~/Images/Models/Sedan.jpg">
-                    </div>
-                </a>
-            </div>
-            <div>
-                <a href="#"><h2>Audi TT</h2></a>
-                <div class="details">
-                    <a href="#">
-                        <div class="priceBuy">
-                            <h2>CENA</h2>
-                            <span>Kup Teraz</span>
-                        </div>
-                        <div class="configuration">
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="containerDetails">
-            <div>
-                <a href="#">
-                    <div>
-                        <img src="~/Images/Models/Coupé.jpg">
-                    </div>
-                </a>
-            </div>
-            <div>
-                <a href="#"><h2>Audi TT</h2></a>
-                <div class="details">
-                    <a href="#">
-                        <div class="priceBuy">
-                            <h2>CENA</h2>
-                            <span>Kup Teraz</span>
-                        </div>
-                        <div class="configuration">
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="containerDetails">
-            <div>
-                <a href="#">
-                    <div>
-                        <img src="~/Images/Models/Sedan.jpg">
-                    </div>
-                </a>
-            </div>
-            <div>
-                <a href="#"><h2>Audi TT</h2></a>
-                <div class="details">
-                    <a href="#">
-                        <div class="priceBuy">
-                            <h2>CENA</h2>
-                            <span>Kup Teraz</span>
-                        </div>
-                        <div class="configuration">
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-                                <div class="section">
-                                    <label>Przbieg:</label>
-                                    <span>300 000 km </span>
-                                </div>
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>4.2 V8</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+       }
     </div>
 </div>

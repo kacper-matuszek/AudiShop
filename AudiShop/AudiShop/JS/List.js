@@ -1,9 +1,7 @@
 ﻿$(document).ready(function () {
     ToggleMenu();
     $(".LayoutCategories").addClass("LayoutList");
-    
 });
-
 function ToggleMenu() {
     $(".CollapseContent").hide();
     $(".Collapsable").children("div").addClass("changed");
