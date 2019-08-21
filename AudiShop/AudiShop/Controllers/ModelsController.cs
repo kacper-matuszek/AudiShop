@@ -38,8 +38,10 @@ namespace AudiShop.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 60000)]
         public ActionResult ModelsMenu()
         {
+
             var _categories = _db.Categories.Select(x => x.Name).ToArray();
             var _models = Enum.GetValues(typeof(ModelType)).Cast<ModelType>().Select(x => x.ToString()).ToArray();
 

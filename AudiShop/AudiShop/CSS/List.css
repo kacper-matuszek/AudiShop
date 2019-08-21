@@ -1,7 +1,7 @@
 ﻿@import "root.css";
 @import "Animation.css";
 .LayoutList {
-    background: radial-gradient(circle, rgba(255,255,255,0.8029586834733894) 4%, rgba(193,65,65,0.6909138655462185) 0%, rgba(0,0,0,1) 80%);
+    background: radial-gradient(circle, rgba(255,255,255,0.8029586834733894) 0%, rgba(193,65,65,0.6909138655462185) 0%, rgba(0,0,0,1) 80%);
 }
 .MenuFlow {
     background: rgb(0,0,0);

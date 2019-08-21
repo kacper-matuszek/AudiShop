@@ -157,7 +157,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AppConfig.cs" />
+    <Compile Include="Helpers\DefaultCacheProvider.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
+    <Compile Include="Helpers\ICacheProvider.cs" />
     <Compile Include="Helpers\UrlHelpers.cs" />
     <Compile Include="Migrations\201907231737424_New Schema.cs" />
     <Compile Include="Migrations\201907231737424_New Schema.Designer.cs">
