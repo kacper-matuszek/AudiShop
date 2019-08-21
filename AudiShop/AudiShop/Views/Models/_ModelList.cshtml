@@ -1,70 +1,70 @@
 ﻿@model IEnumerable<AudiShop.Models.Model>
 @using AudiShop.Helpers
 
-<div class="sceletonList" >
+<div id="sekcjaListaKategorii">
     <div class="list">
-       @foreach (var car in Model)
-       {
-           <div class="containerDetails">
-            <div>
-                <a href=@Url.Action("Details", "Models", new { id = car.ModelID})>
-                    <div>
-                        <img src=@Url.PathOfModel(car.NameString)>
-                    </div>
-                </a>
-            </div>
-            <div>
-                <a href="#"><h2>Audi @car.NameString</h2></a>
-                <div class="details">
-                    <a href="@Url.Action("Details", "Models", new { id = car.ModelID})">
-                        <div class="priceBuy">
-                            <h2>@string.Format("{0: ### ### zł}", car.Price)</h2>
-                            <span>Kup Teraz</span>
-                        </div>
-                        <div class="configuration">
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Silnik:</label>
-                                    <span>@String.Format("{0:0.0}", car.Engine.Capacity) @car.Engine.Emblem</span>
-                                </div>
-                                <div class="section">
-                                    <label>Moc: </label>
-                                    <span>@car.Engine.HorsePower KM / @car.Engine.KiloWat KW</span>
-                                </div>
-                                <div class="section">
-                                    <label>Data produkcji: </label>
-                                    <span> @car.CreatedDate.ToShortDateString()</span>
-                                </div>
-                            </div>
-                            <div class="sceletonSection">
-                                <div class="section">
-                                    <label>Pakiet: </label>
-                                    @if (car.Package == AudiShop.Models.PackageType.SLine)
-                                    {
-                                        <span>S-Line</span>
-                                    }
-                                    else
-                                    {
-                                        <span>@car.PackageString</span>
-                                    }
-                                </div>
-                                <div class="section">
-                                    <label>Quattro: </label>
-                                    @if (car.CarDrive == AudiShop.Models.CarDriveType.Quattro)
-                                    {
-                                        <span>true</span>
-                                    }
-                                    else
-                                    {
-                                        <span>false</span>
-                                    }
-                                </div>
-                            </div>
+        @foreach (var car in Model)
+        {
+            <div class="containerDetails">
+                <div>
+                    <a href=@Url.Action("Details", "Models", new { id = car.ModelID})>
+                        <div>
+                            <img src=@Url.PathOfModel(car.NameString)>
                         </div>
                     </a>
                 </div>
+                <div>
+                    <a href="#"><h2>Audi @car.NameString</h2></a>
+                    <div class="details">
+                        <a href="@Url.Action("Details", "Models", new { id = car.ModelID})">
+                            <div class="priceBuy">
+                                <h2>@string.Format("{0: ### ### zł}", car.Price)</h2>
+                                <span>Kup Teraz</span>
+                            </div>
+                            <div class="configuration">
+                                <div class="sceletonSection">
+                                    <div class="section">
+                                        <label>Silnik:</label>
+                                        <span>@String.Format("{0:0.0}", car.Engine.Capacity) @car.Engine.Emblem</span>
+                                    </div>
+                                    <div class="section">
+                                        <label>Moc: </label>
+                                        <span>@car.Engine.HorsePower KM / @car.Engine.KiloWat KW</span>
+                                    </div>
+                                    <div class="section">
+                                        <label>Data produkcji: </label>
+                                        <span> @car.CreatedDate.ToShortDateString()</span>
+                                    </div>
+                                </div>
+                                <div class="sceletonSection">
+                                    <div class="section">
+                                        <label>Pakiet: </label>
+                                        @if (car.Package == AudiShop.Models.PackageType.SLine)
+                                        {
+                                            <span>S-Line</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@car.PackageString</span>
+                                        }
+                                    </div>
+                                    <div class="section">
+                                        <label>Quattro: </label>
+                                        @if (car.CarDrive == AudiShop.Models.CarDriveType.Quattro)
+                                        {
+                                            <span>true</span>
+                                        }
+                                        else
+                                        {
+                                            <span>false</span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-       }
+        }
     </div>
 </div>

@@ -16,7 +16,10 @@ namespace AudiShop.App_Start
                 .Include("~/Scripts/jquery.unobtrusive-ajax.js")
                 .Include("~/Scripts/jquery-3.4.1.intellisense.js")
                 .Include("~/Scripts/jquery-3.4.1.js")
-                .Include("~/Scripts/jquery-3.4.1.min.js"));
+                .Include("~/Scripts/jquery-3.4.1.min.js")
+                .Include("~/Scripts/jquery-ui-1.12.1.js")
+                .Include("~/Scripts/jquery-ui-1.12.1.min.js")
+                );
             //bundles.Add(new ScriptBundle("~/Scripts/jquery.unobtrusive-ajax.min.js"));
         }
     }

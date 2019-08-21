@@ -18,10 +18,22 @@ namespace AudiShop.Controllers
             return View();
         }
 
-        public ActionResult Lista(string modelName)
+        public ActionResult Lista(string modelName, string searchQuery = null)
         {
             if (modelName.ToUpperInvariant().Length == 2)
             {
+                if(searchQuery != null)
+                {
+                    var _searchMod = _db.Models.Where(m => m.NameString.ToUpper().Contains(searchQuery.ToUpper())).ToList();
+
+                    if(Request.IsAjaxRequest())
+                    {
+                        return PartialView("_ModelList", _searchMod);
+                    }
+
+                    return View(_searchMod);
+                }
+
                 var _modList = _db.Models.Where(m => m.NameString.ToUpper() == modelName.ToUpper()).ToList();
                 return View(_modList);
             }
@@ -52,6 +64,15 @@ namespace AudiShop.Controllers
             };
             
             return PartialView("_ModelsMenu",_result);
+        }
+
+        public ActionResult ModelsPrompt(string term)
+        {
+            var _models = _db.Models.Where(x => x.Available && x.NameString.ToLower().Contains(term.ToLower()))
+                .Take(5)
+                .Select(x => new { label = x.NameString });
+
+            return Json(_models, JsonRequestBehavior.AllowGet);
         }
     }
 }
