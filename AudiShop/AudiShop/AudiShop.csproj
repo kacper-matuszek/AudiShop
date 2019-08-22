@@ -200,9 +200,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AppConfig.cs" />
+    <Compile Include="Helpers\Consts.cs" />
     <Compile Include="Helpers\DefaultCacheProvider.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\ICacheProvider.cs" />
+    <Compile Include="Helpers\ISessionManager.cs" />
+    <Compile Include="Helpers\SessionManager.cs" />
+    <Compile Include="Helpers\TrolleyManager.cs" />
     <Compile Include="Helpers\UrlHelpers.cs" />
     <Compile Include="Migrations\201907231737424_New Schema.cs" />
     <Compile Include="Migrations\201907231737424_New Schema.Designer.cs">
@@ -214,6 +218,7 @@
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\PositionTrolley.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
   </ItemGroup>
