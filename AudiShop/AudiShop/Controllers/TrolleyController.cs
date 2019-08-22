@@ -60,6 +60,7 @@ namespace AudiShop.Controllers
                 IdPositionRemoving = modelID,
                 CountToRemove = countPosition,
                 TrolleyTotalPrice = valueOfTrolley,
+                TrolleyTotalPriceString = String.Format("{0: ### ###} zł", valueOfTrolley),
                 CountPositionsOfTrolley = countPositionOfTrolley
             };
 

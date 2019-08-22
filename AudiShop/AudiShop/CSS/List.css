@@ -90,6 +90,7 @@
     margin-right: 1em;
     margin-left: 1em;
     background:#000;
+    width: 100%;
 }
 .list {
     display: flex;
@@ -215,6 +216,9 @@
     flex-flow: column nowrap;
     margin: .3em;
 }
+.contentEnd {
+    justify-content: flex-end;
+}
 .section {
     display: flex;
     justify-content: flex-start;
@@ -231,3 +235,103 @@
     text-align: center;
     vertical-align:middle;
 }
+
+.sceletonRemoveModel {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    background: rgba(41,41,41, .6);
+    cursor: pointer;
+}
+.removeModel{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--bg-color);
+    text-decoration: none;
+    padding: .3em;
+    height: 100%;
+    transition: .25s ease;
+}
+.sceletonRemoveModel:hover {
+    background: rgba(41,41,41, 1);
+}
+#TotalPrice {
+    margin: .2em;
+    padding: .6em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    top: -.2em;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgba(41,41,41, .6);
+}
+#TotalPrice:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 2.5%;
+    border-top: .25em solid rgb(41,41,41);
+    width: 95%;
+}
+#TotalPrice > div {
+    width: 25%;
+    background-color: var(--borders-color);
+    padding: .6em;
+    margin: .4em;
+    margin-bottom: 0em;
+    margin-right: 0em;
+}
+#TotalPrice > div > label, 
+#TotalPrice > div > span {
+    text-shadow: .25em .25em .25em #000;
+}
+#payButtons {
+    margin: .2em;
+    margin-top: 0em;
+    position:relative;
+    top: -.2em;
+    background-color: rgba(41,41,41,.6);
+}
+#payButtons:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 2.5%;
+    border-top: .25em solid rgb(41,41,41);
+    width: 95%;
+}
+#payButtons > div {
+    margin: .5em;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position:relative;
+}
+#payButtons > div > a{
+    color: var(--bg-color);
+    text-decoration: none;
+    font-size: 1.2em;
+    text-shadow: .25em .25em .25em #000;
+    display: block;
+    padding: 1em;
+    transition: .2s ease;
+}
+#payButtons > div > a:first-child{
+     background-color: rgba(41,41,41, .6);
+}
+#trolley-button-pay,
+#payButtons > div > a:first-child:hover{
+    background-color: var(--borders-color);
+    border-radius: .2em;
+}
+
+#trolley-button-pay:hover {
+    filter: brightness(1.75);
+}
+
+.hidden {
+    display: none;
+}
+

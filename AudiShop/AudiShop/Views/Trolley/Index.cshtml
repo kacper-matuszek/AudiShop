@@ -14,27 +14,47 @@
         <div class="list">
             @foreach( var item in Model.PositionsTrolley)
             {
-                <div id="trolley-row-@item.Model.ModelID">
-                    <a href=@Url.Action("Details", "Models", new { id = item.Model.ModelID})>
-                        <img src=@Url.PathOfModel(item.Model.NameString)>
-                    </a>
-                    <div>Ilość: <span id="trolley-count-positions-@item.Model.ModelID">@item.Count</span></div>
-                    <div id="">@String.Format("{0:0.##} zł", item.Value)</div>
-                    <div><a class="removeModel" data-id="@item.Model.ModelID" href="#">Usuń</a></div>
+                <div id="trolley-row-@item.Model.ModelID" class="containerDetails">
+                    <div>
+                        <a href=@Url.Action("Details", "Models", new { id = item.Model.ModelID})>
+                            <div><img src=@Url.PathOfModel(item.Model.NameString)></div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href=@Url.Action("Details", "Models", new { id = item.Model.ModelID})>
+                            <h2>Audi @item.Model.NameString</h2>
+                        </a>
+                            <div class="details">
+                                <a href=@Url.Action("Details","Models", new { id = item.Model.ModelID})> 
+                                    <div class="sceletonSection contentEnd">
+                                        <div class="section"><label>Ilość:</label> <span id="trolley-count-positions-@item.Model.ModelID">@item.Count szt.</span></div>
+                                        <div class="section"><label>Cena za sztukę:</label> <span>@String.Format("{0: ### ### zł}", item.Value)</span></div>
+                                    </div>
+                                </a>
+                                <div class="sceletonRemoveModel"><a class="removeModel" data-id="@item.Model.ModelID" href="#">Usuń</a></div>
+                        </div>
+                    </div>
                 </div>
             }
             <div id="trolley-empty-message" @if (Model.PositionsTrolley != null && Model.PositionsTrolley.Count > 0) { <text>class="hidden"</text> }>
                 <h2>Twój koszyk jest pusty.</h2>
             </div>
-            <div id="TotalPrice">
-                Razem: <span id="total-price-value">@String.Format("{0:0.##} zł", Model.TotalPrice)</span>
+            @if (Model.TotalPrice > 0)
+            {
+             <div id="TotalPrice">
+                <div class="section">
+                    <label>Razem:</label>
+                    <span id="total-price-value">@String.Format("{0: ### ###} zł", Model.TotalPrice)</span>
+                </div>
             </div>
-            <div>
-                <a href="#">Kontynuuj zakupy</a>
+            }
+            <div id="payButtons" class="section">
+                <div><a href="#">Kontynuuj zakupy</a>
                 @if (Model.TotalPrice > 0)
                 {
                     <a href=@Url.Action("Zaplac", "Trolley") id="trolley-button-pay">Zapłać</a>
                 }
+                </div>
             </div>
         </div>
     </div>
