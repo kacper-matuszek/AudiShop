@@ -10,15 +10,15 @@
 
 <div class="CategoriesContent">
     @Html.Action("ModelsMenu")
-    <!--<div class="sceletonList">
-        <form id="search-form" method="get" data-ajax="true" data-ajax-target="#sekcjaListaKategorii">
+    <div class="sceletonList">
+    <!--    <form id="search-form" method="get" data-ajax="true" data-ajax-target="#sekcjaListaKategorii">
             <input id="search-filter" type="search" name="searchQuery"
                    data-autocomplete-source="@Url.Action("ModelsPrompt")"
                    placeholder="Wprowadź tekst, aby filtrować..." />
             <input type="submit" value=""/>
-        </form>
-       </div>    -->
+        </form>-->
+     
        @Html.Partial("_ModelList")
-
+     </div>
 </div>
 

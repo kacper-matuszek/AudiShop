@@ -1,0 +1,41 @@
+﻿@model AudiShop.ViewModels.TrolleyViewModel
+@using AudiShop.Helpers
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section Styles{
+    <link href=@Url.Content("~/CSS/List.css") rel="stylesheet" type="text/css" />
+
+}
+<div class="CategoriesContent">
+    @Html.Action("ModelsMenu", "Models")
+    <div class="sceletonList">
+        <div class="list">
+            @foreach( var item in Model.PositionsTrolley)
+            {
+                <div id="trolley-row-@item.Model.ModelID">
+                    <a href=@Url.Action("Details", "Models", new { id = item.Model.ModelID})>
+                        <img src=@Url.PathOfModel(item.Model.NameString)>
+                    </a>
+                    <div>Ilość: <span id="trolley-count-positions-@item.Model.ModelID">@item.Count</span></div>
+                    <div id="">@String.Format("{0:0.##} zł", item.Value)</div>
+                    <div><a class="removeModel" data-id="@item.Model.ModelID" href="#">Usuń</a></div>
+                </div>
+            }
+            <div id="trolley-empty-message" @if (Model.PositionsTrolley != null && Model.PositionsTrolley.Count > 0) { <text>class="hidden"</text> }>
+                <h2>Twój koszyk jest pusty.</h2>
+            </div>
+            <div id="TotalPrice">
+                Razem: <span id="total-price-value">@String.Format("{0:0.##} zł", Model.TotalPrice)</span>
+            </div>
+            <div>
+                <a href="#">Kontynuuj zakupy</a>
+                @if (Model.TotalPrice > 0)
+                {
+                    <a href=@Url.Action("Zaplac", "Trolley") id="trolley-button-pay">Zapłać</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
