@@ -1,4 +1,5 @@
 ﻿using AudiShop.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,11 +9,16 @@ using System.Web;
 
 namespace AudiShop.DataAccess
 {
-    public class AudiContext : DbContext
+    public class AudiContext : IdentityDbContext<ApplicationUser>
     {
         public AudiContext()
             :base("AudiContext"){
             AppDomain.CurrentDomain.SetData("DataDirectory", "E:\\Microsoft SQL Server\\MSSQL14.KAC_DATA\\MSSQL\\DATA\\");
+        }
+
+        public static AudiContext Create()
+        {
+            return new AudiContext();
         }
 
         public DbSet<Model> Models { get; set; }

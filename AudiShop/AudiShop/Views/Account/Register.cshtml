@@ -7,7 +7,7 @@
     <div>
         @using (Html.BeginForm("Register", "Account"))
         {
-            Html.AntiForgeryToken();
+            @Html.AntiForgeryToken()
 
             <div id="login-error">
                 @Html.ValidationMessage("loginerror", "")
