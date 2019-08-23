@@ -1,0 +1,18 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section Styles{
+    <link href=@Url.Content("~/CSS/List.css") rel="stylesheet" type="text/css" />
+    }
+
+<div class="CategoriesContent">
+    @Html.Action("ModelsMenu", "Models")
+    <div class="sceletonList">
+        @RenderBody()
+    </div>
+</div>
+@section Scripts 
+{
+    @RenderSection("Scripts", required: false)
+}

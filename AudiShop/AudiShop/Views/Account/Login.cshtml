@@ -1,0 +1,44 @@
+﻿@model AudiShop.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_RightSectionLayout.cshtml";
+}
+
+
+<div>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div id="login-error">
+            @Html.ValidationMessage("loginerror", "")
+        </div>
+        <div id="login-section">
+            <div class="sceletonSection">
+                <div class="section">
+                    @Html.LabelFor(e => e.Email, "E-mail:")
+                    @Html.TextBoxFor(e => e.Email)
+                    <div class="login-validation-message">
+                        @Html.ValidationMessageFor(e => e.Email)
+                    </div>
+                </div>
+                <div class="section">
+                    @Html.LabelFor(p => p.Password, "Hasło:")
+                    @Html.PasswordFor(p => p.Password)
+                    <div class="login-validation-message">
+                        @Html.ValidationMessageFor(p => p.Password)
+                    </div>
+                </div>
+                <div class="section">
+                    @Html.CheckBoxFor(c => c.RememberMe, new { @checked = "checked" })
+                    @Html.LabelFor(c => c.RememberMe, "Zapamiętaj mnie")
+                    <input type="submit" value="Zaloguj" class="submitLink" />
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        <a href=@Url.Action("Register")>Nie mam jeszcze konta</a>
+    </div>
+
+</div>
