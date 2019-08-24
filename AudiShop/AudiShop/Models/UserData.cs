@@ -9,7 +9,7 @@ namespace AudiShop.Models
     public class UserData
     {
         public string Name{ get; set; }
-        public string Lastname{ get; set; }
+        public string LastName{ get; set; }
         public string Address{ get; set; }
         public string City{ get; set; }
 

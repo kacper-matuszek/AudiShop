@@ -95,7 +95,7 @@ namespace AudiShop.Controllers
                 var order = new Order()
                 {
                     Name = user.UserData.Name,
-                    LastName = user.UserData.Lastname,
+                    LastName = user.UserData.LastName,
                     Address = user.UserData.Address,
                     City = user.UserData.City,
                     PostalCode = user.UserData.PostalCode,
