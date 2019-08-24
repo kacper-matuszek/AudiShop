@@ -1,9 +1,14 @@
-﻿using AudiShop.DataAccess;
+﻿using AudiShop.App_Start;
+using AudiShop.DataAccess;
 using AudiShop.Helpers;
+using AudiShop.Models;
 using AudiShop.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,6 +19,19 @@ namespace AudiShop.Controllers
         private TrolleyManager _trolleyManager;
         private ISessionManager _sessionManager;
         private AudiContext _db;
+        private ApplicationUserManager _userManager;
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         public TrolleyController()
         {
@@ -66,5 +84,59 @@ namespace AudiShop.Controllers
 
             return Json(result);
         }
-    }
+
+        public async Task<ActionResult> Pay()
+        {
+            if (Request.IsAuthenticated)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+                //if user data exists in database, it automatically puts in textboxes
+                var order = new Order()
+                {
+                    Name = user.UserData.Name,
+                    LastName = user.UserData.Lastname,
+                    Address = user.UserData.Address,
+                    City = user.UserData.City,
+                    PostalCode = user.UserData.PostalCode,
+                    Email = user.UserData.Email,
+                    PhoneNumber = user.UserData.PhoneNumber
+                };
+
+                return View(order);
+            }
+
+            return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Pay", "Trolley") });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Pay(Order orderDetails)
+        {
+            if (ModelState.IsValid)
+            {
+                //Gets user id from current logged user
+                var userID = User.Identity.GetUserId();
+
+                //it creates order based on what we have in basket
+                var newOrder = _trolleyManager.CreateOrder(orderDetails, userID);
+
+                //user details - it updates user data
+                var user = await UserManager.FindByIdAsync(userID);
+                TryUpdateModel(user.UserData);
+                await UserManager.UpdateAsync(user);
+
+                //clear basket
+                _trolleyManager.EmptyTrolley();
+
+                return RedirectToAction("ConfirmationOrder");
+            }
+
+            return View(orderDetails);
+        }
+
+        public ActionResult ConfirmationOrder()
+        {
+            return View();
+        }
+    } 
 }

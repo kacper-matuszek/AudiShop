@@ -10,6 +10,9 @@ namespace AudiShop.Models
     {
         public int OrderID { get; set; }
 
+        public string UserID { get; set; }
+        public virtual ApplicationUser User { get; set; }
+
         [Required(ErrorMessage = "Enter your name.")]
         [StringLength(50, ErrorMessage = "Length of customer name cannot be under 50 chars.")]
         public string Name { get; set; }
@@ -22,13 +25,17 @@ namespace AudiShop.Models
         [StringLength(100, ErrorMessage = "Length of city cannot be under 100 chars.")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "Enter your street.")]
+        [Required(ErrorMessage = "Enter your address.")]
         [StringLength(100, ErrorMessage = "Length of street cannot be under 100 chars.")]
-        public string Street { get; set; }
+        public string Address { get; set; }
 
         [Required(ErrorMessage = "Enter your postal code.")]
         [StringLength(6, ErrorMessage = "Length of postal code cannot be under 6 chars.")]
         public string PostalCode { get; set; }
+
+        [Required(ErrorMessage = "Enter your phone number")]
+        [StringLength(20)]
+        [RegularExpression(@"(\+\d{2})*[\d\s-]+", ErrorMessage = "The format of phone number is incorrect")]
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Comment { get; set; }

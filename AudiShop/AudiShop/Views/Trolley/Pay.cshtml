@@ -1,0 +1,56 @@
+﻿@model AudiShop.Models.Order
+@{
+    ViewBag.Title = "Pay";
+    Layout = "~/Views/Shared/_RightSectionLayout.cshtml";
+}
+
+@using (Html.BeginForm("Pay", "Trolley"))
+{
+    <div id="checkout-address">
+        <div class="sceletonSection">
+            <div class="section">
+                @Html.LabelFor(n => n.Name, "Imię:")
+                @Html.TextBoxFor(n => n.Name)
+                @Html.ValidationMessageFor(n => n.Name)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.LastName, "Nazwisko:")
+                @Html.TextBoxFor(n => n.LastName)
+                @Html.ValidationMessageFor(n => n.LastName)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.Address, "Adres:")
+                @Html.TextBoxFor(n => n.Address)
+                @Html.ValidationMessageFor(n => n.Address)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.City, "Miasto:")
+                @Html.TextBoxFor(n => n.City)
+                @Html.ValidationMessageFor(n => n.City)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.PostalCode, "Kod Pocztowy:")
+                @Html.TextBoxFor(n => n.PostalCode)
+                @Html.ValidationMessageFor(n => n.PostalCode)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.Email, "E-mail:")
+                @Html.TextBoxFor(n => n.Email)
+                @Html.ValidationMessageFor(n => n.Email)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.PhoneNumber, "Nr. telefonu:")
+                @Html.TextBoxFor(n => n.PhoneNumber)
+                @Html.ValidationMessageFor(n => n.PhoneNumber)
+            </div>
+        </div>
+    </div>
+
+    @Html.ValidationSummary()
+
+    <div>
+        <a href="#">Wróć</a>
+        <input type="submit" class="button-link" value="Potwierdź" />
+    </div>
+}
+

@@ -91,7 +91,7 @@ namespace AudiShop.Helpers
             var trolley = GetTrolley();
 
             newOrder.CreatedDate = DateTime.Now;
-            //newOrder.userID = userID;
+            newOrder.UserID = userID;
 
             _db.Orders.Add(newOrder);
 

@@ -241,6 +241,10 @@
     <Compile Include="Migrations\201907231737424_New Schema.Designer.cs">
       <DependentUpon>201907231737424_New Schema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908240929521_Orders.cs" />
+    <Compile Include="Migrations\201908240929521_Orders.Designer.cs">
+      <DependentUpon>201908240929521_Orders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Engine.cs" />
@@ -275,6 +279,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Trolley\Pay.cshtml" />
+    <Content Include="Views\Trolley\ConfirmationOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -289,6 +295,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201907231737424_New Schema.resx">
       <DependentUpon>201907231737424_New Schema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908240929521_Orders.resx">
+      <DependentUpon>201908240929521_Orders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

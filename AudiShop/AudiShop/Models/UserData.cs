@@ -9,9 +9,12 @@ namespace AudiShop.Models
     public class UserData
     {
         public string Name{ get; set; }
-        public string Surname{ get; set; }
+        public string Lastname{ get; set; }
         public string Address{ get; set; }
         public string City{ get; set; }
+
+        [StringLength(6, ErrorMessage = "Length of postal code cannot be under 6 chars.")]
+        public string PostalCode { get; set; }
 
         [RegularExpression(@"(\+\d{2})*[\d\s]+", ErrorMessage = "Invalid phone number.")]
         public string PhoneNumber{ get; set; }
