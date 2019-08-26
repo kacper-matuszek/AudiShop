@@ -1,0 +1,115 @@
+﻿@model IEnumerable<AudiShop.Models.Order>
+@using AudiShop.Helpers
+@{
+    ViewBag.Title = "OrdersList";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+    //TODO Create new appearance
+}
+
+
+<div>
+    <h2>Twoje Zamówienia</h2>
+    <div class="sceletonList">
+        @if (Model.Any())
+        {
+            <div class="list">
+                @foreach(var order in Model)
+                {
+                    <div id="form"  @if (order.Status == AudiShop.Models.OrderStatus.New) {<text>class="newOrder"</text> } >
+                        <div class="section">
+                            <label>Nr. zamówienia</label>
+                            <label>@order.OrderID</label>
+                        </div>
+                        <div class="section">
+                            <label>Data zamówienia</label>
+                            <label>@order.CreatedDate.ToString("dd/MM/yyyy")</label>
+                        </div>
+                        <div class="section">
+                            @if (ViewBag.UserIsAdmin)
+                            {
+                                using (Html.BeginForm("ChangeOfOrderStatus", "Manage"))
+                                {
+                                    @Html.HiddenFor(o => order.OrderID)
+                                    @Html.EnumDropDownListFor(o => order.Status, new { @class = "ChangeStatusOrder"})
+                                }
+                            } else
+                            {
+                                @Html.DisplayFor(o => order.OrderID)
+                            }
+                        </div>
+                        <div class="sceletonSection">
+                            <strong>Dane wysyłkowe:</strong>
+                            @order.Name @order.LastName <br />
+                            @order.Address <br/>
+                            @order.PostalCode @order.City <br/>
+                        </div>
+                        <div class="sceletonSection">
+                            <h3>Uwagi: </h3>
+                            <article>@order.Comment</article>
+                            <div class="section">
+                                <label>Wartość zamówienia: </label>
+                                <label>@String.Format("{0: ### ###} zł", order.Value)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        @foreach (var orderDetail in order.OrderDetails)
+                        {
+                            <div class="containerDetails"> 
+                                <div>
+                                    <a href=@Url.Action("Details", "Models", new { id = orderDetail.ModelID})>
+                                        <div>
+                                            <img src=@Url.PathOfModel(orderDetail.Models.NameString)>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#"><h2>Audi @orderDetail.Models.NameString</h2></a>
+                                    <div class="details">
+                                        <a href="@Url.Action("Details", "Models", new { id = orderDetail.ModelID})">
+                                            <div class="sceletonSection">
+                                                <div class="section">
+                                                    <label>Sztuk: </label>
+                                                    <label>@orderDetail.Amount</label>
+                                                </div>
+                                                <div class="section">
+                                                    <label>Łącznie: </label>
+                                                    <label>@String.Format("{0: ### ###} zł",(orderDetail.Amount * orderDetail.PriceValue))</label>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        } else
+        {
+            <div>
+                Brak zamówień
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(".ChangeStatusOrder").on("change", function (e) {
+            e.preventDefault();
+
+            var f = $(this.form)
+            var div = f.closest("#form");
+            var serializedFrom = f.serialize();
+
+            $.post(action, serializedFrom).done(function (data) {
+                if (data == @AudiShop.Models.OrderStatus.New.ToString()) {
+                    div.addClass("newOrder");
+                } else {
+                    div.removeClass("newOrder");
+                }
+            })
+        })
+    </script>    
+
+}

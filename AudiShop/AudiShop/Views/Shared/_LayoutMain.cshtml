@@ -28,7 +28,8 @@
                             <i class="fas fa-user"></i>
                             <span>Zaloguj</span>
                         </a>
-                    </div>--> @Html.Partial("_LoginPartial")
+                    </div>-->
+                    @Html.Partial("_LoginPartial")
                     <div>
                         <a href="#">
                             <i class="fas fa-shopping-basket"></i>
@@ -96,7 +97,7 @@
             </div>
         </div>
     </div>
-    @RenderSection("scripts", false)
     @Scripts.Render("~/JS/sc")
+    @RenderSection("scripts", false)
 </body>
 </html>

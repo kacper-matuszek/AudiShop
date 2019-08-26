@@ -18,6 +18,7 @@ namespace AudiShop.Migrations
         {
 
             AudiInitializer.SeedData(context);
+            AudiInitializer.SeedUsers(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

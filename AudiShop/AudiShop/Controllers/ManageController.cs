@@ -1,4 +1,5 @@
 ﻿using AudiShop.App_Start;
+using AudiShop.DataAccess;
 using AudiShop.Models;
 using AudiShop.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -6,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -16,7 +18,7 @@ namespace AudiShop.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-
+        private AudiContext _db = new AudiContext();
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
@@ -136,6 +138,37 @@ namespace AudiShop.Controllers
             RemoveLoginSuccess,
             RemovePhoneSuccess,
             Error
+        }
+
+        public ActionResult OrdersList()
+        {
+            bool isAdmin = User.IsInRole("Admin");
+            ViewBag.UserIsAdmin = isAdmin;
+
+            IEnumerable<Order> userOrders;
+
+            if (isAdmin)
+            {
+                userOrders = _db.Orders.Include(d => d.OrderDetails).OrderByDescending(d => d.CreatedDate).ToArray();
+            } else
+            {
+                var userID = User.Identity.GetUserId();
+                userOrders = _db.Orders.Where(d => d.UserID == userID).Include(d => d.OrderDetails).OrderByDescending(d => d.CreatedDate).ToArray(); 
+            }
+
+            return View(userOrders);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public OrderStatus ChangeOfOrderStatus(Order order)
+        {
+            Order orderToModify = _db.Orders.Find(order.OrderID);
+
+            orderToModify.Status = order.Status;
+            _db.SaveChanges();
+
+            return order.Status;
         }
     }
 }

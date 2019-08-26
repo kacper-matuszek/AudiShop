@@ -1,5 +1,7 @@
 ﻿using AudiShop.Migrations;
 using AudiShop.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -100,6 +102,49 @@ namespace AudiShop.DataAccess
             models.ForEach(m => context.Models.AddOrUpdate(m));
             context.SaveChanges();
 
+        }
+
+        public static void SeedUsers(AudiContext db)
+        {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+
+            const string name = "admin@AudiShop.pl";
+            const string password = "P@$$W0RD";
+            const string roleName = "Admin";
+
+
+            //Creating default admin user
+            var user = userManager.FindByName(name);
+
+            if (user == null)
+            {
+                user = new ApplicationUser
+                {
+                    UserName = name,
+                    Email = name,
+                    UserData = new UserData()
+                };
+
+                var result = userManager.Create(user, password);
+            }
+
+            //It creates admin role if not exists
+            var role = roleManager.FindByName(roleName);
+
+            if (role == null)
+            {
+                role = new IdentityRole(roleName);
+                var roleResult = roleManager.Create(role);
+            }
+
+            //Adding user to role if don't have it
+            var roleForUser = userManager.GetRoles(user.Id);
+
+            if (!roleForUser.Contains(role.Name))
+            {
+                var result = userManager.AddToRole(user.Id, role.Name);
+            }
         }
     }
 }
