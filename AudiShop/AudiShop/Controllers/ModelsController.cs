@@ -25,7 +25,12 @@ namespace AudiShop.Controllers
             {
                 if(searchQuery != null)
                 {
-                    var _searchMod = _db.Models.Where(m => m.NameString.ToUpper().Contains(searchQuery.ToUpper())).ToList();
+                    List<Model> _searchMod;
+
+                    if (User.IsInRole("Admin"))
+                        _searchMod = _db.Models.Where(m => m.NameString.ToUpper().Contains(searchQuery.ToUpper())).ToList();
+                    else
+                        _searchMod = _db.Models.Where(m => m.NameString.ToUpper().Contains(searchQuery.ToUpper())).ToList();
 
                     if(Request.IsAjaxRequest())
                     {
@@ -35,7 +40,13 @@ namespace AudiShop.Controllers
                     return View(_searchMod);
                 }
 
-                var _modList = _db.Models.Where(m => m.NameString.ToUpper() == modelName.ToUpper()).ToList();
+                List<Model> _modList;
+
+                if(User.IsInRole("Admin"))
+                    _modList = _db.Models.Where(m => m.NameString.ToUpper() == modelName.ToUpper()).ToList();
+                else
+                    _modList = _db.Models.Where(m => m.NameString.ToUpper() == modelName.ToUpper() && m.Available).ToList();
+
                 return View(_modList);
             }
             var _catList = _db.Categories.Where(c => c.Name.ToUpper() == modelName.ToUpper()).Single();

@@ -75,6 +75,7 @@ namespace AudiShop.Models
         Standard,
         Sportback,
         Advanced,
+        [Display(Name = "S-Line")]
         SLine,
         Sport
     }

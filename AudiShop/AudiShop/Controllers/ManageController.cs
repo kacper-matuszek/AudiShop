@@ -1,5 +1,6 @@
 ﻿using AudiShop.App_Start;
 using AudiShop.DataAccess;
+using AudiShop.Helpers;
 using AudiShop.Models;
 using AudiShop.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -8,6 +9,7 @@ using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -169,6 +171,98 @@ namespace AudiShop.Controllers
             _db.SaveChanges();
 
             return order.Status;
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddModel(int? modelID, bool? confirmation)
+        {
+            Model model;
+
+            if (modelID.HasValue)
+            {
+                ViewBag.EditMode = true;
+                model = _db.Models.Find(modelID);
+            } else
+            {
+                ViewBag.EditMode = false;
+                model = new Model();
+            }
+
+            var result = new EditModelViewModel
+            {
+                Categories = _db.Categories.ToList(),
+                Engines = _db.Engines.ToList(),
+                Model = model,
+                Confirmation = confirmation
+            };
+
+            return View(result);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddModel(EditModelViewModel model, HttpPostedFileBase file)
+        {
+            if (model.Model.ModelID > 0)
+            {
+                _db.Entry(model.Model).State = EntityState.Modified;
+                _db.SaveChanges();
+
+                return RedirectToAction("AddModel", new { confirmation = true });
+            }
+
+            //It check whether user choose the file
+            if (file != null && file.ContentLength > 0)
+            {
+
+                if (ModelState.IsValid)
+                {
+                    var fileExt = Path.GetExtension(file.FileName);
+                    var fileName = Guid.NewGuid() + fileExt;
+
+                    var path = Path.Combine(Server.MapPath(AppConfig.ModelIcons), fileName);
+                    file.SaveAs(path);
+
+                    model.Model.PictureName = fileName;
+                    model.Model.CreatedDate = DateTime.Now;
+
+                    _db.Entry(model.Model).State = EntityState.Added;
+                    _db.SaveChanges();
+
+                    return RedirectToAction("AddModel", new { confirmation = true });
+                }
+
+                model.Categories = _db.Categories.ToList(); ;
+
+                return View(model);
+            }
+
+            ModelState.AddModelError("", "Nie wskazano pliku");
+
+            var category = _db.Categories.ToList();
+            model.Categories = category;
+
+            return View(model);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult HideModel(int modelID)
+        {
+            var model = _db.Models.Find(modelID);
+            model.Available = false;
+            _db.SaveChanges();
+
+            return RedirectToAction("AddModel", new { confirmation = true });
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ShowModel(int modelID)
+        {
+            var model = _db.Models.Find(modelID);
+            model.Available = true;
+            _db.SaveChanges();
+
+            return RedirectToAction("AddModel", new { confirmation = true });
         }
     }
 }

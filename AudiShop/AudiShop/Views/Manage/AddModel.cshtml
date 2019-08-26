@@ -1,0 +1,85 @@
+﻿@model AudiShop.ViewModels.EditModelViewModel
+@{
+    ViewBag.Title = "AddModel";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<h2>Edycja produktu</h2>
+<div>
+    @if (Model.Confirmation.HasValue && Model.Confirmation.Value)
+    {
+        <div>
+            Pomyślnie wprowadzono zmiany !
+        </div>
+    }
+    @using (Html.BeginForm("AddModel", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="sceletonSection">
+            <div class="error-summary">
+                @Html.ValidationSummary()
+            </div>
+
+            @Html.HiddenFor(o => o.Model.ModelID)
+            @Html.HiddenFor(o => o.Model.CreatedDate)
+            @Html.HiddenFor(o => o.Model.PictureName)
+            <div class="section">
+                @Html.LabelFor(n => n.Model.Name, "Nazwa modelu: ")
+                @Html.DropDownListFor(n => n.Model.Name, new SelectList(Enum.GetValues(typeof(AudiShop.Models.ModelType))))
+                @Html.ValidationMessageFor(n => n.Model.Name)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.Model.Categoria, "Nadwozie: ")
+                @Html.DropDownListFor(n => n.Model.CategoriaID, new SelectList(Model.Categories, "CategoriaID", "Name", Model.Categories.First().CategoriaID))
+                @Html.ValidationMessageFor(n => n.Model.Categoria)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.Model.Package, "Pakiet: ")
+                @Html.DropDownListFor(n => n.Model.Package, new SelectList(Enum.GetValues(typeof(AudiShop.Models.PackageType))))
+                @Html.ValidationMessageFor(n => n.Model.Package)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.Model.CarDrive, "Napęd: ")
+                @Html.DropDownListFor(n => n.Model.CarDrive, new SelectList(Enum.GetValues(typeof(AudiShop.Models.CarDriveType))))
+                @Html.ValidationMessageFor(n => n.Model.CarDrive)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.Model.Description, "Opis / Uwagi: ")
+                @Html.TextAreaFor(n => n.Model.Description)
+                @Html.ValidationMessageFor(n => n.Model.Description)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.Model.Color, "Kolor: ")
+                @Html.TextBoxFor(n => n.Model.Color)
+                @Html.ValidationMessageFor(n => n.Model.Color)
+            </div>
+            <div class="section">
+                @Html.LabelFor(n => n.Model.Price, "Cena: ")
+                @Html.TextBoxFor(n => n.Model.Price)
+                @Html.ValidationMessageFor(n => n.Model.Price)
+            </div>
+            @if (ViewBag.EditMode == null || !ViewBag.EditMode)
+            {
+                <div class="upload">
+                    <input type="file" name="file" />
+                </div>
+            }
+        </div>
+
+        <div>
+            @if (ViewBag.EditMode)
+            {
+                if (!Model.Model.Available)
+                {
+                    @Html.ActionLink(linkText:"Przywróć", actionName: "ShowModel", controllerName: "Manage", routeValues: new { modelID = Model.Model.ModelID}, htmlAttributes: null)
+                } else
+                {
+                    @Html.ActionLink(linkText: "Usuń", actionName: "HideModel", controllerName: "Manage", routeValues: new { modelID = Model.Model.ModelID}, htmlAttributes: null)
+                }
+            }
+        </div>
+        <input type="submit" value="Zapisz" class="submitLink" />
+    }
+</div>
+

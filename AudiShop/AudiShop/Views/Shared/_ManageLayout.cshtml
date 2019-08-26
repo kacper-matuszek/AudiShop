@@ -20,7 +20,10 @@
                 <ul>
                     <li>@Html.ActionLink(linkText: "Twoje Dane", actionName: "Index", controllerName:"Manage", routeValues: null, htmlAttributes: null)</li>
                     <li>@Html.ActionLink(linkText: "Zamówienia", actionName: "OrdersList", controllerName:"Manage", routeValues: null, htmlAttributes: null)</li>
-                    <li><a href=index.html>Kontakt</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink(linkText:"Dodaj", actionName: "AddModel", controllerName: "Manage", routeValues: null, htmlAttributes: null)</li>
+                    }
                 </ul>
                 <section class="LoginBasket">
                     <!--<div>

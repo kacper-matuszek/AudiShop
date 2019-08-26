@@ -89,5 +89,9 @@
                 </div>
             </div>
         </div>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            @Html.ActionLink(linkText: "Edytuj", actionName: "AddModel", controllerName: "Manage",routeValues: new { modelID = Model.ModelID}, htmlAttributes:null)
+        }
     </div>
 </div>
