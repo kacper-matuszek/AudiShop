@@ -5,6 +5,7 @@ using AudiShop.Models;
 using AudiShop.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,6 +128,19 @@ namespace AudiShop.Controllers
 
                 //clear basket
                 _trolleyManager.EmptyTrolley();
+
+                var order = _db.Orders.Include(o => o.OrderDetails).Include(o => o.OrderDetails.Select(od => od.Model)).SingleOrDefault(o => o.OrderID == newOrder.OrderID);
+
+                OrderConfirmationEmail email = new OrderConfirmationEmail()
+                {
+                    To = order.Email,
+                    From = "AudiShop@gmail.com",
+                    OrderValue = order.Value,
+                    OrderNumber = order.OrderID,
+                    OrderDetails = order.OrderDetails
+                };
+
+                email.Send();
 
                 return RedirectToAction("ConfirmationOrder");
             }

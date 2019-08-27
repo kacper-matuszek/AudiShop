@@ -1,0 +1,24 @@
+﻿@model AudiShop.ViewModels.OrderConfirmationEmail
+@using AudiShop.Models
+Content-Type: text/plain; charset=utf-8
+
+Dziękujemy za wybór naszego sklepu.
+
+Złożyłeś zamówienie w serwisie Audi Shop.
+
+Zamówione pozycje: 
+@{ 
+    IEnumerable<OrderDetail> orderDetails = Model.OrderDetails;
+
+    foreach(var orderDetail in orderDetails)
+    {
+       @String.Format("Audi {0}",orderDetail.Model.NameString)
+    }
+}
+
+Prosimy o przelanie kwoty @String.Format("{0: ### ### zł.}",Model.OrderValue) z tytułem zamówienia nr. @Model.OrderNumber na nasze konto: 
+
+Audi Shop test
+ul. Testowo 42
+41-320 Tescik
+PKO BP 0000 00000 00000 0000 000 0

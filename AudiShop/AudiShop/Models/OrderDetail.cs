@@ -13,7 +13,7 @@ namespace AudiShop.Models
         public int Amount { get; set; }
         public decimal PriceValue { get; set; }
 
-        public virtual Model Models { get; set; }
-        public virtual Order Orders { get; set; }
+        public virtual Model Model { get; set; }
+        public virtual Order Order { get; set; }
     }
 }
