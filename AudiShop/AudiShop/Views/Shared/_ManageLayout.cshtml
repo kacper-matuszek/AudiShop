@@ -23,6 +23,7 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink(linkText:"Dodaj", actionName: "AddModel", controllerName: "Manage", routeValues: null, htmlAttributes: null)</li>
+                        <li><a href=@Url.Content("~/hangfire")>Jobs</a></li>
                     }
                 </ul>
                 <section class="LoginBasket">

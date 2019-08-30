@@ -12,6 +12,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Hangfire;
+using System.Net;
 
 namespace AudiShop.Controllers
 {
@@ -129,25 +131,43 @@ namespace AudiShop.Controllers
                 //clear basket
                 _trolleyManager.EmptyTrolley();
 
-                var order = _db.Orders.Include(o => o.OrderDetails).Include(o => o.OrderDetails.Select(od => od.Model)).SingleOrDefault(o => o.OrderID == newOrder.OrderID);
+                string url = Url.Action("OrderConfirmationEmail", "Trolley", new { orderID = newOrder.OrderID, lastName = newOrder.LastName}, Request.Url.Scheme);
+                BackgroundJob.Enqueue(() => Call(url));
 
-                OrderConfirmationEmail email = new OrderConfirmationEmail()
-                {
-                    To = order.Email,
-                    From = "AudiShop@gmail.com",
-                    OrderValue = order.Value,
-                    OrderNumber = order.OrderID,
-                    OrderDetails = order.OrderDetails
-                };
-
-                email.Send();
-
+               
                 return RedirectToAction("ConfirmationOrder");
             }
 
             return View(orderDetails);
         }
+        public void Call(string url)
+        {
+            var request = HttpWebRequest.Create(url);
+            request.GetResponseAsync();
+        }
 
+        public ActionResult OrderConfirmationEmail(int orderID, string lastName)
+        {
+            var order = _db.Orders.Include(o => o.OrderDetails).Include(o => o.OrderDetails.Select(od => od.Model)).SingleOrDefault(o => o.OrderID == orderID && o.LastName == lastName);
+
+            if (order == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            OrderConfirmationEmail email = new OrderConfirmationEmail()
+            {
+                To = order.Email,
+                From = "AudiShop@gmail.com",
+                OrderValue = order.Value,
+                OrderNumber = order.OrderID,
+                OrderDetails = order.OrderDetails
+            };
+
+            email.Send();
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
         public ActionResult ConfirmationOrder()
         {
             return View();
