@@ -19,8 +19,9 @@ namespace AudiShop.Controllers
 {
     public class TrolleyController : Controller
     {
-        private TrolleyManager _trolleyManager;
         private ISessionManager _sessionManager;
+        private IMailService _mailService;
+        private TrolleyManager _trolleyManager;
         private AudiContext _db;
         private ApplicationUserManager _userManager;
 
@@ -36,10 +37,11 @@ namespace AudiShop.Controllers
             }
         }
 
-        public TrolleyController()
+        public TrolleyController(AudiContext context, IMailService mailService, ISessionManager sessionManager)
         {
-            _db = new AudiContext();
-            _sessionManager = new SessionManager();
+            _db = context;
+            _mailService = mailService;
+            _sessionManager = sessionManager;
             _trolleyManager = new TrolleyManager(_sessionManager, _db);
         }
         // GET: Trolley
@@ -130,44 +132,14 @@ namespace AudiShop.Controllers
 
                 //clear basket
                 _trolleyManager.EmptyTrolley();
+                _mailService.SendMailOfOrderConfirmation(newOrder);
 
-                string url = Url.Action("OrderConfirmationEmail", "Trolley", new { orderID = newOrder.OrderID, lastName = newOrder.LastName}, Request.Url.Scheme);
-                BackgroundJob.Enqueue(() => Call(url));
-
-               
                 return RedirectToAction("ConfirmationOrder");
             }
 
             return View(orderDetails);
         }
-        public void Call(string url)
-        {
-            var request = HttpWebRequest.Create(url);
-            request.GetResponseAsync();
-        }
-
-        public ActionResult OrderConfirmationEmail(int orderID, string lastName)
-        {
-            var order = _db.Orders.Include(o => o.OrderDetails).Include(o => o.OrderDetails.Select(od => od.Model)).SingleOrDefault(o => o.OrderID == orderID && o.LastName == lastName);
-
-            if (order == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-            }
-
-            OrderConfirmationEmail email = new OrderConfirmationEmail()
-            {
-                To = order.Email,
-                From = "AudiShop@gmail.com",
-                OrderValue = order.Value,
-                OrderNumber = order.OrderID,
-                OrderDetails = order.OrderDetails
-            };
-
-            email.Send();
-
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }
+       
         public ActionResult ConfirmationOrder()
         {
             return View();

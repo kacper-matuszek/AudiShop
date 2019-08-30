@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,6 +17,12 @@ namespace AudiShop.Helpers
             var _absolutePath = param.Content(string.Format("{0}.jpg",_path));
 
             return _absolutePath;
+        }
+
+        public static void CallUrl(string url)
+        {
+            var request = HttpWebRequest.Create(url);
+            request.GetResponseAsync();
         }
     }
 }

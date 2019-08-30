@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -263,6 +264,31 @@ namespace AudiShop.Controllers
             _db.SaveChanges();
 
             return RedirectToAction("AddModel", new { confirmation = true });
+        }
+
+        [AllowAnonymous]
+        public ActionResult SendMailOfOrderConfirmation (int orderID, string lastName)
+        {
+            var order = _db.Orders.Include(o => o.OrderDetails).Include(o => o.OrderDetails.Select(od => od.Model)).SingleOrDefault(o => o.OrderID == orderID && o.LastName == lastName);
+
+            if (order == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+
+            OrderConfirmationEmail email = new OrderConfirmationEmail()
+            {
+                To = order.Email,
+                From = "AudiShop@gmail.com",
+                OrderValue = order.Value,
+                OrderNumber = order.OrderID,
+                OrderDetails = order.OrderDetails
+            };
+
+            email.Send();
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }
