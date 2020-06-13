@@ -103,7 +103,7 @@
             var serializedFrom = f.serialize();
 
             $.post(action, serializedFrom).done(function (data) {
-                if (data == @AudiShop.Models.OrderStatus.New.ToString()) {
+                if (data == @AudiShop.Data.Models.OrderStatus.New.ToString()) {
                     div.addClass("newOrder");
                 } else {
                     div.removeClass("newOrder");
