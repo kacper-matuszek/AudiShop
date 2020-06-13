@@ -1,13 +1,11 @@
-﻿using AudiShop.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Web;
+using AudiShop.Data.Defaults;
+using AudiShop.Data.Models;
 
-namespace AudiShop.DataAccess
+namespace AudiShop.Data
 {
     public class AudiContext : IdentityDbContext<ApplicationUser>
     {
@@ -25,7 +23,7 @@ namespace AudiShop.DataAccess
         public DbSet<Order> Orders { get; set; }
         public DbSet<Engine> Engines { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
-        public DbSet<Categoria> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         static AudiContext()
         {

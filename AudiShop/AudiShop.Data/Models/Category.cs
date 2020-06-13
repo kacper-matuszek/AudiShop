@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace AudiShop.Models
+namespace AudiShop.Data.Models
 {
     //UnderBody Type
-    public class Categoria
+    public class Category
     {
-        public int CategoriaID { get; set; }
+        public int CategoryId { get; set; }
 
-        [Required(ErrorMessage = "Enter categoria name.")]
+        [Required(ErrorMessage = "Enter category name.")]
         [StringLength(100, ErrorMessage = "Length of category name cannot be under 100 chars.")]
         public string Name { get; set; }
         public string PictureName { get; set; }

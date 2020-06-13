@@ -1,7 +1,5 @@
 ﻿using AudiShop.App_Start;
-using AudiShop.DataAccess;
 using AudiShop.Helpers;
-using AudiShop.Models;
 using AudiShop.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -15,29 +13,26 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AudiShop.Data;
+using AudiShop.Data.Models;
 
 namespace AudiShop.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
-        private AudiContext _db = new AudiContext();
+        private AudiContext _db;
         private ApplicationUserManager _userManager;
-        public ApplicationUserManager UserManager
+
+        public ManageController(AudiContext db)
         {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
+            _db = db;
         }
 
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
+        public ApplicationUserManager UserManager => _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
+
         // GET: Manage
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
@@ -46,10 +41,7 @@ namespace AudiShop.Controllers
                 ViewData = (ViewDataDictionary)TempData["ViewData"];
             }
 
-            if (User.IsInRole("Admin"))
-                ViewBag.UserIsAdmin = true;
-            else
-                ViewBag.UserIsAdmin = false;
+            ViewBag.UserIsAdmin = User.IsInRole("Admin");
 
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AudiShop.Models.Order>
+﻿@model IEnumerable<AudiShop.Data.Models.Order>
 @using AudiShop.Helpers
 @{
     ViewBag.Title = "OrdersList";
@@ -15,7 +15,7 @@
             <div class="list">
                 @foreach(var order in Model)
                 {
-                    <div id="form"  @if (order.Status == AudiShop.Models.OrderStatus.New) {<text>class="newOrder"</text> } >
+                    <div id="form"  @if (order.Status == AudiShop.Data.Models.OrderStatus.New) {<text>class="newOrder"</text> } >
                         <div class="section">
                             <label>Nr. zamówienia</label>
                             <label>@order.OrderID</label>
@@ -59,12 +59,12 @@
                                 <div>
                                     <a href=@Url.Action("Details", "Models", new { id = orderDetail.ModelID})>
                                         <div>
-                                            <img src=@Url.PathOfModel(orderDetail.Models.NameString)>
+                                            <img src=@Url.PathOfModel(orderDetail.Model.Name.ToString())>
                                         </div>
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="#"><h2>Audi @orderDetail.Models.NameString</h2></a>
+                                    <a href="#"><h2>Audi @orderDetail.Model.Name.ToString()</h2></a>
                                     <div class="details">
                                         <a href="@Url.Action("Details", "Models", new { id = orderDetail.ModelID})">
                                             <div class="sceletonSection">

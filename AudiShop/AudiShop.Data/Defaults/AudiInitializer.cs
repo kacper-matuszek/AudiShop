@@ -1,31 +1,29 @@
-﻿using AudiShop.Migrations;
-using AudiShop.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Web;
+using AudiShop.Data.Migrations;
+using AudiShop.Data.Models;
 
-namespace AudiShop.DataAccess
+namespace AudiShop.Data.Defaults
 {
     class AudiInitializer : MigrateDatabaseToLatestVersion<AudiContext, Configuration>
     {
 
         public static void SeedData(AudiContext context)
         {
-            var categories = new List<Categoria>
+            var categories = new List<Category>
             {
-                new Categoria() {CategoriaID = 1, Name ="Sportback",PictureName="Sportback.jpg" },
-                new Categoria() {CategoriaID = 2, Name ="Limousine", PictureName="Limousine.jpg" },
-                new Categoria() {CategoriaID = 3, Name ="Sport", PictureName="Sport.jpg" },
-                new Categoria() {CategoriaID = 4, Name ="Avant", PictureName="Avant.jpg" },
-                new Categoria() {CategoriaID = 5, Name ="Allroad", PictureName="Allroad.jpg" },
-                new Categoria() {CategoriaID = 6, Name ="Coupé", PictureName="Coupé.jpg" },
-                new Categoria() {CategoriaID = 7, Name ="SUV", PictureName="SUV.jpg" },
-                new Categoria() {CategoriaID = 8, Name ="Sedan", PictureName="Sedan.jpg" }
+                new Category() {CategoryId = 1, Name ="Sportback",PictureName="Sportback.jpg" },
+                new Category() {CategoryId = 2, Name ="Limousine", PictureName="Limousine.jpg" },
+                new Category() {CategoryId = 3, Name ="Sport", PictureName="Sport.jpg" },
+                new Category() {CategoryId = 4, Name ="Avant", PictureName="Avant.jpg" },
+                new Category() {CategoryId = 5, Name ="Allroad", PictureName="Allroad.jpg" },
+                new Category() {CategoryId = 6, Name ="Coupé", PictureName="Coupé.jpg" },
+                new Category() {CategoryId = 7, Name ="SUV", PictureName="SUV.jpg" },
+                new Category() {CategoryId = 8, Name ="Sedan", PictureName="Sedan.jpg" }
             };
 
             categories.ForEach(c => context.Categories.AddOrUpdate(c));

@@ -1,5 +1,5 @@
 ﻿@model AudiShop.ViewModels.OrderConfirmationEmail
-@using AudiShop.Models
+@using AudiShop.Data.Models
 Content-Type: text/html; charset=utf-8
 
 <html>
@@ -17,7 +17,7 @@ Content-Type: text/html; charset=utf-8
         foreach(var orderDetail in orderDetails)
         {
           <p>
-            @String.Format("Audi {0}",orderDetail.Model.NameString)
+            @String.Format("Audi {0}",orderDetail.Model.Name.ToString())
            </p>
         }
     }

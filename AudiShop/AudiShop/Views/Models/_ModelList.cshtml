@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AudiShop.Models.Model>
+﻿@model IEnumerable<AudiShop.Data.Models.Model>
 @using AudiShop.Helpers
 
 <div id="sekcjaListaKategorii">
@@ -9,12 +9,12 @@
                 <div>
                     <a href=@Url.Action("Details", "Models", new { id = car.ModelID})>
                         <div>
-                            <img src=@Url.PathOfModel(car.NameString)>
+                            <img src=@Url.PathOfModel(car.Name.ToString())>
                         </div>
                     </a>
                 </div>
                 <div>
-                    <a href="#"><h2>Audi @car.NameString</h2></a>
+                    <a href="#"><h2>Audi @car.Name.ToString()</h2></a>
                     <div class="details">
                         <a href="@Url.Action("Details", "Models", new { id = car.ModelID})">
                             <div class="priceBuy">
@@ -39,18 +39,18 @@
                                 <div class="sceletonSection">
                                     <div class="section">
                                         <label>Pakiet: </label>
-                                        @if (car.Package == AudiShop.Models.PackageType.SLine)
+                                        @if (car.Package == AudiShop.Data.Models.PackageType.SLine)
                                         {
                                             <span>S-Line</span>
                                         }
                                         else
                                         {
-                                            <span>@car.PackageString</span>
+                                            <span>@car.Package.ToString()</span>
                                         }
                                     </div>
                                     <div class="section">
                                         <label>Quattro: </label>
-                                        @if (car.CarDrive == AudiShop.Models.CarDriveType.Quattro)
+                                        @if (car.CarDrive == AudiShop.Data.Models.CarDriveType.Quattro)
                                         {
                                             <span>true</span>
                                         }

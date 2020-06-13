@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2050
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudiShop", "AudiShop\AudiShop.csproj", "{82B68D6C-BEC1-4C59-9459-009A31DC3D3C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudiShop.Tests", "AudiShop.Tests\AudiShop.Tests.csproj", "{7C14C41B-673C-4567-806C-F384B27BAFE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudiShop.Data", "AudiShop.Data\AudiShop.Data.csproj", "{1B344C97-8C20-4858-9731-2B981A7DD2CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7C14C41B-673C-4567-806C-F384B27BAFE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C14C41B-673C-4567-806C-F384B27BAFE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C14C41B-673C-4567-806C-F384B27BAFE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B344C97-8C20-4858-9731-2B981A7DD2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B344C97-8C20-4858-9731-2B981A7DD2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B344C97-8C20-4858-9731-2B981A7DD2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B344C97-8C20-4858-9731-2B981A7DD2CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

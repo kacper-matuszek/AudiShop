@@ -1,16 +1,15 @@
-﻿using AudiShop.DataAccess;
-using AudiShop.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using AudiShop.Data;
+using AudiShop.Data.Models;
 
 namespace AudiShop.Helpers
 {
     public class TrolleyManager
     {
-        private AudiContext _db;
-        private ISessionManager _session;
+        private readonly AudiContext _db;
+        private readonly ISessionManager _session;
         public TrolleyManager(ISessionManager session, AudiContext db)
         {
             _session = session;
@@ -38,7 +37,7 @@ namespace AudiShop.Helpers
                 positionTrolley.Count++;
             else
             {
-                var modelToAdd = _db.Models.Where(m => m.ModelID == modelID).SingleOrDefault();
+                var modelToAdd = _db.Models.SingleOrDefault(m => m.ModelID == modelID);
 
                 if (modelToAdd != null)
                 {
@@ -61,17 +60,15 @@ namespace AudiShop.Helpers
             var trolley = GetTrolley();
             var positionTrolley = trolley.Find(t => t.Model.ModelID == modelID);
 
-            if (positionTrolley != null)
+            if (positionTrolley == null) return 0;
+            if (positionTrolley.Count > 1)
             {
-                if (positionTrolley.Count > 1)
-                {
-                    positionTrolley.Count--;
+                positionTrolley.Count--;
 
-                    return positionTrolley.Count;
-                }
-
-                trolley.Remove(positionTrolley);
+                return positionTrolley.Count;
             }
+
+            trolley.Remove(positionTrolley);
 
             return 0;
         }

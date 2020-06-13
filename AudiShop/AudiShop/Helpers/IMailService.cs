@@ -1,4 +1,4 @@
-﻿using AudiShop.Models;
+﻿using AudiShop.Data.Models;
 
 namespace AudiShop.Helpers
 {

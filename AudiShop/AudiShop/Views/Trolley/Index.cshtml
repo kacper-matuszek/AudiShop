@@ -17,12 +17,12 @@
                 <div id="trolley-row-@item.Model.ModelID" class="containerDetails">
                     <div>
                         <a href=@Url.Action("Details", "Models", new { id = item.Model.ModelID})>
-                            <div><img src=@Url.PathOfModel(item.Model.NameString)></div>
+                            <div><img src=@Url.PathOfModel(item.Model.Name.ToString())></div>
                         </a>
                     </div>
                     <div>
                         <a href=@Url.Action("Details", "Models", new { id = item.Model.ModelID})>
-                            <h2>Audi @item.Model.NameString</h2>
+                            <h2>Audi @item.Model.Name.ToString()</h2>
                         </a>
                             <div class="details">
                                 <a href=@Url.Action("Details","Models", new { id = item.Model.ModelID})> 

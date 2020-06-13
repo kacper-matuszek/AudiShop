@@ -1,17 +1,19 @@
-﻿using AudiShop.DataAccess;
-using AudiShop.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using AudiShop.Data;
+using AudiShop.Data.Models;
 
 namespace AudiShop.Controllers
 {
     public class ModelsController : Controller
     {
-        private AudiContext _db = new AudiContext();
+        private AudiContext _db;
+
+        public ModelsController(AudiContext db)
+        {
+            _db = db;
+        }
 
         // GET: Models
         public ActionResult Index()
@@ -21,44 +23,38 @@ namespace AudiShop.Controllers
 
         public ActionResult Lista(string modelName, string searchQuery = null)
         {
-            if (modelName.ToUpperInvariant().Length == 2)
+            if (modelName.ToString().ToUpperInvariant().Length == 2)
             {
                 if(searchQuery != null)
                 {
-                    List<Model> _searchMod;
-
-                    if (User.IsInRole("Admin"))
-                        _searchMod = _db.Models.Where(m => m.NameString.ToUpper().Contains(searchQuery.ToUpper())).ToList();
-                    else
-                        _searchMod = _db.Models.Where(m => m.NameString.ToUpper().Contains(searchQuery.ToUpper())).ToList();
+                    var searchMod = User.IsInRole("Admin") 
+                        ? _db.Models.Where(m => m.Name.ToString().ToUpper().Contains(searchQuery.ToUpper())).ToList() 
+                        : _db.Models.Where(m => m.Name.ToString().ToUpper().Contains(searchQuery.ToUpper())).ToList();
 
                     if(Request.IsAjaxRequest())
                     {
-                        return PartialView("_ModelList", _searchMod);
+                        return PartialView("_ModelList", searchMod);
                     }
 
-                    return View(_searchMod);
+                    return View(searchMod);
                 }
 
-                List<Model> _modList;
+                var modList = User.IsInRole("Admin")
+                    ? _db.Models.Where(m => m.Name.ToString().ToUpper() == modelName.ToUpper()).ToList()
+                    : _db.Models.Where(m => m.Name.ToString().ToUpper() == modelName.ToUpper() && m.Available).ToList();
 
-                if(User.IsInRole("Admin"))
-                    _modList = _db.Models.Where(m => m.NameString.ToUpper() == modelName.ToUpper()).ToList();
-                else
-                    _modList = _db.Models.Where(m => m.NameString.ToUpper() == modelName.ToUpper() && m.Available).ToList();
-
-                return View(_modList);
+                return View(modList);
             }
-            var _catList = _db.Categories.Where(c => c.Name.ToUpper() == modelName.ToUpper()).Single();
-            var _models = _catList.Models.ToList();
-            return View(_models);
+            var catList = _db.Categories.Single(c => c.Name.ToString().ToUpper() == modelName.ToString().ToUpper());
+            var models = catList.Models.ToList();
+            return View(models);
         }
 
         public ActionResult Details(int id)
         {
-            var _carModel = _db.Models.Find(id);
+            var carModel = _db.Models.Find(id);
 
-            return View(_carModel);
+            return View(carModel);
         }
 
         [ChildActionOnly]
@@ -66,25 +62,25 @@ namespace AudiShop.Controllers
         public ActionResult ModelsMenu()
         {
 
-            var _categories = _db.Categories.Select(x => x.Name).ToArray();
-            var _models = Enum.GetValues(typeof(ModelType)).Cast<ModelType>().Select(x => x.ToString()).ToArray();
+            var categories = _db.Categories.Select(x => x.Name.ToString()).ToArray();
+            var models = Enum.GetValues(typeof(ModelType)).Cast<ModelType>().Select(x => x.ToString()).ToArray();
 
-            string[][] _result = new string[][]
+            string[][] result = new string[][]
             {
-                _categories,
-                _models
+                categories,
+                models
             };
             
-            return PartialView("_ModelsMenu",_result);
+            return PartialView("_ModelsMenu",result);
         }
 
         public ActionResult ModelsPrompt(string term)
         {
-            var _models = _db.Models.Where(x => x.Available && x.NameString.ToLower().Contains(term.ToLower()))
+            var models = _db.Models.Where(x => x.Available && x.Name.ToString().ToLower().Contains(term.ToLower()))
                 .Take(5)
-                .Select(x => new { label = x.NameString });
+                .Select(x => new { label = x.Name.ToString() });
 
-            return Json(_models, JsonRequestBehavior.AllowGet);
+            return Json(models, JsonRequestBehavior.AllowGet);
         }
     }
 }

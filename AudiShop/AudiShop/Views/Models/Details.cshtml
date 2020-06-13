@@ -1,4 +1,4 @@
-﻿@model AudiShop.Models.Model
+﻿@model AudiShop.Data.Models.Model
 @using AudiShop.Helpers
 @{
     ViewBag.Title = "Details";
@@ -13,10 +13,10 @@
     <div class="sceletonModel modelBackground">
         <div class="headerModel">
             <div>
-                <img src=@Url.PathOfModel(Model.NameString) />
+                <img src=@Url.PathOfModel(Model.Name.ToString()) />
             </div>
             <div>
-                <h2 class="Banner">Audi @Model.NameString</h2>
+                <h2 class="Banner">Audi @Model.Name.ToString()</h2>
                 <div>
                     <h1>@string.Format("{0: ### ###}",Model.Price) PLN</h1>
                     <button>
@@ -38,13 +38,13 @@
                     </div>
                     <div class="section">
                         <label>Pakiet: </label>
-                        @if (Model.Package == AudiShop.Models.PackageType.SLine)
+                        @if (Model.Package == AudiShop.Data.Models.PackageType.SLine)
                         {
                             <span>S-Line</span>
                         }
                         else
                         {
-                            <span>@Model.PackageString</span>
+                            <span>@Model.Package.ToString()</span>
                         }
                     </div>
                     <div class="section">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="section">
                         <label>Napęd: </label>
-                        <span>@Model.CarDriveString</span>
+                        <span>@Model.CarDrive.ToString()</span>
                     </div>
                 </div>
             </div>

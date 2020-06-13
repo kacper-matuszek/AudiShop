@@ -1,5 +1,5 @@
 ﻿@model AudiShop.ViewModels.OrderConfirmationEmail
-@using AudiShop.Models
+@using AudiShop.Data.Models
 Content-Type: text/plain; charset=utf-8
 
 Dziękujemy za wybór naszego sklepu.
@@ -12,7 +12,7 @@ Zamówione pozycje:
 
     foreach(var orderDetail in orderDetails)
     {
-       @String.Format("Audi {0}",orderDetail.Model.NameString)
+       @String.Format("Audi {0}",orderDetail.Model.Name.ToString())
     }
 }
 

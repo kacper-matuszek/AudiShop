@@ -1,17 +1,19 @@
-﻿using AudiShop.DataAccess;
-using AudiShop.Models;
-using AudiShop.ViewModels;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using AudiShop.Data;
+using AudiShop.Data.Models;
 
 namespace AudiShop.Controllers
 {
     public class HomeController : Controller
     {
-        private AudiContext _db = new AudiContext();
+        private AudiContext _db;
+
+        public HomeController(AudiContext db)
+        {
+            _db = db;
+        }
 
         // GET: Home
         public ActionResult Index()

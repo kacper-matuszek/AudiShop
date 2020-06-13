@@ -1,19 +1,14 @@
 ﻿using AudiShop.App_Start;
-using AudiShop.DataAccess;
 using AudiShop.Helpers;
-using AudiShop.Models;
 using AudiShop.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using System.Data.Entity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Hangfire;
-using System.Net;
+using AudiShop.Data;
+using AudiShop.Data.Models;
 
 namespace AudiShop.Controllers
 {
@@ -27,14 +22,8 @@ namespace AudiShop.Controllers
 
         public ApplicationUserManager UserManager
         {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
+            get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            private set => _userManager = value;
         }
 
         public TrolleyController(AudiContext context, IMailService mailService, ISessionManager sessionManager)
@@ -117,27 +106,24 @@ namespace AudiShop.Controllers
         [HttpPost]
         public async Task<ActionResult> Pay(Order orderDetails)
         {
-            if (ModelState.IsValid)
-            {
-                //Gets user id from current logged user
-                var userID = User.Identity.GetUserId();
+            if (!ModelState.IsValid) return View(orderDetails);
+            //Gets user id from current logged user
+            var userID = User.Identity.GetUserId();
 
-                //it creates order based on what we have in basket
-                var newOrder = _trolleyManager.CreateOrder(orderDetails, userID);
+            //it creates order based on what we have in basket
+            var newOrder = _trolleyManager.CreateOrder(orderDetails, userID);
 
-                //user details - it updates user data
-                var user = await UserManager.FindByIdAsync(userID);
-                TryUpdateModel(user.UserData);
-                await UserManager.UpdateAsync(user);
+            //user details - it updates user data
+            var user = await UserManager.FindByIdAsync(userID);
+            TryUpdateModel(user.UserData);
+            await UserManager.UpdateAsync(user);
 
-                //clear basket
-                _trolleyManager.EmptyTrolley();
-                _mailService.SendMailOfOrderConfirmation(newOrder);
+            //clear basket
+            _trolleyManager.EmptyTrolley();
+            _mailService.SendMailOfOrderConfirmation(newOrder);
 
-                return RedirectToAction("ConfirmationOrder");
-            }
+            return RedirectToAction("ConfirmationOrder");
 
-            return View(orderDetails);
         }
        
         public ActionResult ConfirmationOrder()

@@ -1,20 +1,18 @@
-namespace AudiShop.Migrations
+namespace AudiShop.Data.Migrations
 {
-    using AudiShop.DataAccess;
-    using System;
-    using System.Data.Entity;
+    using Defaults;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<AudiShop.DataAccess.AudiContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<AudiContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "AudiShop.DataAccess.AudiContext";
+            AutomaticMigrationDataLossAllowed = true;
+            ContextKey = "AudiShop.Data.AudiContext";
         }
 
-        protected override void Seed(AudiShop.DataAccess.AudiContext context)
+        protected override void Seed(AudiContext context)
         {
 
             AudiInitializer.SeedData(context);

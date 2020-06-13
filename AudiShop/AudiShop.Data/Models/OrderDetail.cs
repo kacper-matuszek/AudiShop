@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AudiShop.Models
+namespace AudiShop.Data.Models
 {
     public class OrderDetail
     {
