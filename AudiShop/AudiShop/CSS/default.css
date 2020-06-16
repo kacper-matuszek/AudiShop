@@ -46,8 +46,13 @@ body
     margin-left: auto;
     height: 100%;
     flex-wrap: wrap;
-    align-items: center;
     align-self: flex-end;
+}
+
+.Header-Navigation .LoginBasket > div 
+{
+    display: flex;
+    flex-flow: column;
 }
 
 .Header-Navigation .LoginBasket > div a
@@ -127,7 +132,7 @@ body
     margin: 0;
     padding: 0;
     overflow: hidden;
-    height: 100%;
+    height: auto;
     width: auto;
 }
 
