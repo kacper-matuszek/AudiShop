@@ -30,9 +30,9 @@
                 @Html.ValidationMessageFor(n => n.Model.Name)
             </div>
             <div class="section">
-                @Html.LabelFor(n => n.Model.Categoria, "Nadwozie: ")
-                @Html.DropDownListFor(n => n.Model.CategoriaID, new SelectList(Model.Categories, "CategoryId", "Name", Model.Categories.First().CategoryId))
-                @Html.ValidationMessageFor(n => n.Model.Categoria)
+                @Html.LabelFor(n => n.Model.Category, "Nadwozie: ")
+                @Html.DropDownListFor(n => n.Model.CategoryID, new SelectList(Model.Categories, "CategoryId", "Name", Model.Categories.First().CategoryId))
+                @Html.ValidationMessageFor(n => n.Model.Category)
             </div>
             <div class="section">
                 @Html.LabelFor(n => n.Model.Package, "Pakiet: ")

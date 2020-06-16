@@ -57,9 +57,9 @@
   <ItemGroup>
     <Compile Include="AudiContext.cs" />
     <Compile Include="Defaults\AudiInitializer.cs" />
-    <Compile Include="Migrations\202006131245477_Schema.cs" />
-    <Compile Include="Migrations\202006131245477_Schema.Designer.cs">
-      <DependentUpon>202006131245477_Schema.cs</DependentUpon>
+    <Compile Include="Migrations\202006161142371_Schema.cs" />
+    <Compile Include="Migrations\202006161142371_Schema.Designer.cs">
+      <DependentUpon>202006161142371_Schema.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -77,8 +77,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006131245477_Schema.resx">
-      <DependentUpon>202006131245477_Schema.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006161142371_Schema.resx">
+      <DependentUpon>202006161142371_Schema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

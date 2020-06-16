@@ -6,7 +6,7 @@ namespace AudiShop.Data.Models
     public class Model
     {
         public int ModelID { get; set; }
-        public int CategoriaID { get; set; }
+        public int CategoryID { get; set; }
         public int EngineID { get; set; }
 
         [Required(ErrorMessage = "Enter model name.")]
@@ -29,8 +29,8 @@ namespace AudiShop.Data.Models
         public decimal Price { get; set; }
         public bool Available { get; set; }
 
-        //Categoria == UnderBody
-        public virtual Category Categoria { get; set; }
+        //Category == UnderBody
+        public virtual Category Category { get; set; }
         public virtual Engine Engine { get; set; }
     }
 

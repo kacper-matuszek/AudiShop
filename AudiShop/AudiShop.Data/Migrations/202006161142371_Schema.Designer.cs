@@ -13,7 +13,7 @@ namespace AudiShop.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202006131245477_Schema"; }
+            get { return "202006161142371_Schema"; }
         }
         
         string IMigrationMetadata.Source

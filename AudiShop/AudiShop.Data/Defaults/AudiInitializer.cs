@@ -82,17 +82,17 @@ namespace AudiShop.Data.Defaults
             var models = new List<Model>
             {
                 /* Petrol Models*/
-                new Model() {ModelID = 1, Name = ModelType.A1, CarDrive = CarDriveType.FrontAxle, CategoriaID = 1,
+                new Model() {ModelID = 1, Name = ModelType.A1, CarDrive = CarDriveType.FrontAxle, CategoryID = 1,
                 CreatedDate = DateTime.Now, Available = true, EngineID = 1, Package = PackageType.Sportback, Price = 87300, Description="Sportback"},
-                new Model() {ModelID = 2, Name = ModelType.A1, CarDrive = CarDriveType.FrontAxle, CategoriaID = 1,
+                new Model() {ModelID = 2, Name = ModelType.A1, CarDrive = CarDriveType.FrontAxle, CategoryID = 1,
                 CreatedDate = DateTime.Now, Available = true, EngineID = 3, Package = PackageType.Sportback, Price = 106600, Description="Sportback"},
-                new Model() {ModelID = 3, Name = ModelType.A1, CarDrive = CarDriveType.FrontAxle, CategoriaID = 1,
+                new Model() {ModelID = 3, Name = ModelType.A1, CarDrive = CarDriveType.FrontAxle, CategoryID = 1,
                 CreatedDate = DateTime.Now, Available = true, EngineID = 4, Package = PackageType.SLine, Price = 127000, Description="S-Line"},
-                new Model() {ModelID =  4, Name = ModelType.A3, EngineID = 3, CarDrive = CarDriveType.FrontAxle, CategoriaID = 1,
+                new Model() {ModelID =  4, Name = ModelType.A3, EngineID = 3, CarDrive = CarDriveType.FrontAxle, CategoryID = 1,
                 CreatedDate = DateTime.Now, Available = true, Package = PackageType.Standard, Price = 112400, Description="Standard Version"},
-                new Model() {ModelID = 5, Name = ModelType.A3, EngineID = 7, CarDrive = CarDriveType.Quattro, CategoriaID = 2,
+                new Model() {ModelID = 5, Name = ModelType.A3, EngineID = 7, CarDrive = CarDriveType.Quattro, CategoryID = 2,
                 CreatedDate = DateTime.Now, Available = true, Package = PackageType.Standard, Price = 274300, Description = "Standar Version"},
-                new Model() {ModelID = 6, Name = ModelType.A3, EngineID=12, CarDrive = CarDriveType.Quattro, CategoriaID=1,
+                new Model() {ModelID = 6, Name = ModelType.A3, EngineID=12, CarDrive = CarDriveType.Quattro, CategoryID=1,
                 CreatedDate = DateTime.Now, Available = true, Package = PackageType.Sportback, Price = 480000, Description="Latest"}
                 /*Petrol Models*/
             };
@@ -124,7 +124,7 @@ namespace AudiShop.Data.Defaults
                     UserData = new UserData()
                 };
 
-                var result = userManager.Create(user, password);
+                userManager.Create(user, password);
             }
 
             //It creates admin role if not exists
@@ -133,7 +133,7 @@ namespace AudiShop.Data.Defaults
             if (role == null)
             {
                 role = new IdentityRole(roleName);
-                var roleResult = roleManager.Create(role);
+                roleManager.Create(role);
             }
 
             //Adding user to role if don't have it
@@ -141,7 +141,7 @@ namespace AudiShop.Data.Defaults
 
             if (!roleForUser.Contains(role.Name))
             {
-                var result = userManager.AddToRole(user.Id, role.Name);
+                userManager.AddToRole(user.Id, role.Name);
             }
         }
     }

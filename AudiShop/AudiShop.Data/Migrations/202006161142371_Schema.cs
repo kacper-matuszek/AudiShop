@@ -22,7 +22,7 @@ namespace AudiShop.Data.Migrations
                 c => new
                     {
                         ModelID = c.Int(nullable: false, identity: true),
-                        CategoriaID = c.Int(nullable: false),
+                        CategoryID = c.Int(nullable: false),
                         EngineID = c.Int(nullable: false),
                         Name = c.Int(nullable: false),
                         CarDrive = c.Int(nullable: false),
@@ -33,13 +33,12 @@ namespace AudiShop.Data.Migrations
                         PictureName = c.String(),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Available = c.Boolean(nullable: false),
-                        Categoria_CategoryId = c.Int(),
                     })
                 .PrimaryKey(t => t.ModelID)
-                .ForeignKey("dbo.Category", t => t.Categoria_CategoryId)
+                .ForeignKey("dbo.Category", t => t.CategoryID, cascadeDelete: true)
                 .ForeignKey("dbo.Engine", t => t.EngineID, cascadeDelete: true)
-                .Index(t => t.EngineID)
-                .Index(t => t.Categoria_CategoryId);
+                .Index(t => t.CategoryID)
+                .Index(t => t.EngineID);
             
             CreateTable(
                 "dbo.Engine",
@@ -182,7 +181,7 @@ namespace AudiShop.Data.Migrations
             DropForeignKey("dbo.OrderDetail", "OrderID", "dbo.Order");
             DropForeignKey("dbo.OrderDetail", "ModelID", "dbo.Model");
             DropForeignKey("dbo.Model", "EngineID", "dbo.Engine");
-            DropForeignKey("dbo.Model", "Categoria_CategoryId", "dbo.Category");
+            DropForeignKey("dbo.Model", "CategoryID", "dbo.Category");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -192,8 +191,8 @@ namespace AudiShop.Data.Migrations
             DropIndex("dbo.Order", new[] { "UserID" });
             DropIndex("dbo.OrderDetail", new[] { "ModelID" });
             DropIndex("dbo.OrderDetail", new[] { "OrderID" });
-            DropIndex("dbo.Model", new[] { "Categoria_CategoryId" });
             DropIndex("dbo.Model", new[] { "EngineID" });
+            DropIndex("dbo.Model", new[] { "CategoryID" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
