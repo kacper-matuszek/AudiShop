@@ -31,7 +31,7 @@
                     </div>-->
                     @Html.Partial("_LoginPartial")
                     <div>
-                        <a href="#">
+                        <a href="@Url.Action("Index", "Trolley")">
                             <i class="fas fa-shopping-basket"></i>
                             <span>Koszyk <span id="trolley-title-count-items">(@Html.Action("GetCountItems", "Trolley"))</span></span>
                         </a>
